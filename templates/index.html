@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<!---
+  Copyright 2009 Roman Nurik
+
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title>Realtor.IO</title>
+    <link rel='stylesheet' id='font-face-css'  href='http://www.wpbundle.com/wp-content/themes/wpb/fonts/load.css?ver=3.0.1' type='text/css' media='all' /> 
+    <link type="text/css" rel="stylesheet" href="http://yui.yahooapis.com/2.7.0/build/reset/reset-min.css"/>
+    <link type="text/css" rel="stylesheet" href="/static/jqueryui-theme/jquery-ui-1.7.2.custom.css"/>
+    <link type="text/css" rel="stylesheet" href="/static/css/app.css"/>
+    <script type="text/javascript" src="/static/js/jquery.min.js"></script>
+    <script type="text/javascript" src="/static/js/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="http://www.google.com/jsapi?key={% jsapi_key %}"></script>
+    <script type="text/javascript" src="/static/lib/jquery.scrollTo-1.4.2-min.js"></script>
+    <script type="text/javascript" src="/static/lib/microtemplate.js"></script>
+    <script type="text/javascript" src="/static/js/front.js"></script>
+    <link href='http://fonts.googleapis.com/css?family=Lobster&subset=latin' rel='stylesheet' type='text/css'> 
+	<link href='http://fonts.googleapis.com/css?family=Droid+Sans:regular,bold' rel='stylesheet' type='text/css'> 
+    <script type="text/javascript">
+      google.load('maps', '1', {other_params: "sensor=false"});
+      google.setOnLoadCallback(init);
+    </script>
+  </head>
+  <body onunload="GUnload()">
+    <div id="login-bar">
+      {% if current_user %}
+      	<strong><a href="/add">Add Listing (FREE!)</a></strong>
+        &nbsp;|&nbsp;
+        <strong>{{ current_user.email }}</strong>
+        &nbsp;|&nbsp;
+        <a href="{% logout_url %}">Sign out</a>
+      {% else %}
+      	<strong><a href="{% login_url %}">Add Listing (FREE!)</a></strong>
+        &nbsp;|&nbsp;
+        <a href="{% login_url %}">Sign in</a>
+      {% endif %}
+    </div>
+    
+    <div id="container">
+            <h2><a href="/">Realtor.IO</a></h2>
+            
+            <div id="intro">
+            <p>
+            Real Estate + Web 2.0
+            </p>
+            </div>
+        
+        <form action="" onsubmit="doGeocodeAndSearch(); return false;">
+          <div id="search-container">
+            <p><label for="search-query">Search:</label></p>
+            <input id="search-query" type="search" />
+
+            <input type="submit" value="Search"/>
+            
+            <img id="loading" src="/static/images/loading.gif" alt="Loading..."/>
+          </div>
+          
+          <div id="advanced-options-container">
+            <div id="search-error">&nbsp;</div>
+            <a id="advanced-options-toggle" href="#">Advanced Options</a>
+            
+            <div id="advanced-options">
+              <div class="row clearfix">
+                <label for="search-price-slider">Price:</label>
+                <div id="search-price-slider"></div>
+                <div id="search-price-display"></div>
+              </div>
+              <div class="row clearfix">
+                <label for="search-type">Property Type:</label>
+                <select id="search-type">
+                  <option value="">(Any)</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+      
+      <div id="view-toggle">
+        <a href="#">List view &raquo;</a>
+      </div>
+      
+      <div id="content" class="clearfix">
+        <div id="list-view-container">
+          <p id="list-view-status">
+            Enter a search location to search on.
+          </p>
+          <ul id="list-view">
+          </ul>
+        </div>
+        
+        <div id="map-container">
+          <div id="map"></div>
+        </div>
+      </div>
+      
+      <div id="footer">
+        <p align="center">Copyright &copy; 2010 SocialEstates.com (<a href="http://socialestates.com" target="_blank">socialestates.com</a>)</p>
+      </div>
+    </div>
+    
+    <div id="end">
+    <script type="text/html" id="tpl_result_info_window">
+      <div class="result-info-window">
+        <h2><img src="<%= result.icon %>"/> <%= result.address %>
+      
+        <div class="details">
+          <% if (result.distance) { %>
+            <p class="distance"><%= formatDistance(result.distance) %></p>
+          <% } %>
+        
+          <ul>
+            <li>
+              <span class="label">Baths/Beds:</span>
+                <%= result.baths %> / <%= result.beds %>
+            </li>
+            <li>
+              <span class="label">Size:</span>
+                <%= result.baths %> / <%= result.size %>
+            </li>
+            <li>
+              <span class="label">Phone:</span>
+                <%= result.phone_number %>
+            </li>
+            <li>
+              <span class="label">Price:</span>
+                $<%= result.price %>
+            </li>
+            <li>
+              <span class="label">Type:</span>
+              <%= result.property_type %>
+            </li>
+          </ul></h2>
+        </div>
+      </div>
+    </script>
+    
+    <script type="text/html" id="tpl_result_list_item">
+        <h3><img src="<%= result.icon %>"/> <%= result.address %></h3>	
+		<h3>Price: <%= result.price %></h3>
+        <h3>Baths/Beds: <%= result.baths %> / <%= result.beds %></h3>
+    </script>
+    </div>
+    
+  </body>
+</html>
