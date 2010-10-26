@@ -30,22 +30,21 @@
     <script type="text/javascript" src="/static/js/front.js"></script>
     <link href='http://fonts.googleapis.com/css?family=Lobster&subset=latin' rel='stylesheet' type='text/css'> 
 	<link href='http://fonts.googleapis.com/css?family=Droid+Sans:regular,bold' rel='stylesheet' type='text/css'> 
+	<script language="JavaScript" src="http://j.maxmind.com/app/geoip.js"></script>
     <script type="text/javascript">
-      google.load('maps', '1', {other_params: "sensor=false"});
+      google.load('maps', '2', {other_params: "sensor=false"});
       google.setOnLoadCallback(init);
     </script>
   </head>
   <body onunload="GUnload()">
     <div id="login-bar">
-      {% if current_user %}
-      	<strong><a href="/add">Add Listing (FREE!)</a></strong>
+      	<strong><a href="/">Home</a></strong>
         &nbsp;|&nbsp;
+      {% if current_user %}
         <strong>{{ current_user.email }}</strong>
         &nbsp;|&nbsp;
         <a href="{% logout_url %}">Sign out</a>
       {% else %}
-      	<strong><a href="{% login_url %}">Add Listing (FREE!)</a></strong>
-        &nbsp;|&nbsp;
         <a href="{% login_url %}">Sign in</a>
       {% endif %}
     </div>
@@ -55,9 +54,22 @@
             
             <div id="intro">
             <p>
-            Real Estate + Web 2.0
+            Real Estate + Web 2.0 = I <img src="http://iamneurotic.com/wp-content/themes/neurotic/images/heart-icon.gif"></img> Realtor.IO<br>
+            <script language="JavaScript">
+            document.write(geoip_city());
+            document.write(', ');
+            document.write(geoip_region());
+            document.write(' ');
+            document.write(geoip_country_name());
+            </script>
             </p>
             </div>
+            
+            {% if current_user %}
+            <div id="add-toggle"><strong><a id="add-listing-toggle" href="#">Add Listing (FREE!)</a></strong></div>
+            {% else %}
+            <div id="add-toggle"><strong><a id="add-listing-toggle" href="{% login_url %}">Add Listing (FREE!)</a></strong></div>
+            {% endif %}
         
         <form action="" onsubmit="doGeocodeAndSearch(); return false;">
           <div id="search-container">
@@ -114,6 +126,8 @@
     </div>
     
     <div id="end">
+
+    
     <script type="text/html" id="tpl_result_info_window">
       <div class="result-info-window">
         <h2><img src="<%= result.icon %>"/> <%= result.address %>

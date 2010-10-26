@@ -39,6 +39,8 @@ from google.appengine.api import urlfetch
 
 import geocoder
 
+import datetime
+
 
 template.register_template_library(
     'django.contrib.humanize.templatetags.humanize')
@@ -61,6 +63,14 @@ class ListingForm(djangoforms.ModelForm):
     class Meta:
         model = Listing
         exclude = ['added_by','location_geocells', 'location']
+        
+    """
+    def save(self):
+        if not self.key():
+            self.createDate = datetime.date.today()
+        self.updated = datetime.datetime.today()
+        super(Listing, self).save()
+    """
       
         
 class ListPage(webapp.RequestHandler):
@@ -92,19 +102,18 @@ class ListingFormPage(webapp.RequestHandler):
             pts = g.query(self.request.POST.get('address'))
             if pts and len(pts) >= 2:
                 geoPoint = db.GeoPt(pts[0], pts[1])
-            print pts[0]
-            print pts[1]
             logging.info( "Using lat %s and long %s" % (pts[0], pts[1]) )
             
             # Save the data, and redirect to the view page
             entity = None
-            try:
-                entity = data.save(commit=False)
-            except:
-                pass
+            
+            photo = self.request.get("photo")
+            entity.photo = db.Blob(photo)
+            
+            entity = data.save(commit=False)
             entity.location = geoPoint
             entity.update_location()
-            entity.added_by = users.get_current_user()
+            entity.author = users.get_current_user()
             entity.put()
             
             self.redirect('/?success=yes')
@@ -127,17 +136,39 @@ class ListingEditPage(webapp.RequestHandler):
                                 '<form method="POST" '
                                 'action="/edit">'
                                 '<table>')
-        self.response.out.write(ItemForm(instance=item))
+        self.response.out.write(ListingForm(instance=item))
         self.response.out.write('</table>'
-                                '<input type="hidden" name="_id" value="%s">'
+                                '<input type="hidden" name="id" value="%s">'
                                 '<input type="submit">'
                                 '</form></body></html>' % id)
+        
+    def post(self):
+      id = int(self.request.get('id'))
+      item = Listing.get(db.Key.from_path('Listing', id))
+      data = ListingForm(data=self.request.POST, instance=item)
+      if data.is_valid():
+          # Save the data, and redirect to the view page
+          entity = data.save(commit=False)
+          entity.added_by = users.get_current_user()
+          entity.put()
+          self.redirect('/list')
+      else:
+          # Reprint the form
+          self.response.out.write('<html><body>'
+                                  '<form method="POST" '
+                                  'action="/edit">'
+                                  '<table>')
+          self.response.out.write(data)
+          self.response.out.write('</table>'
+                                  '<input type="hidden" name="id" value="%s">'
+                                  '<input type="submit">'
+                                  '</form></body></html>' % id)
         
 class ListingDetailsPage(webapp.RequestHandler):
     def get (self):
         id = int(self.request.get('id'))
         item = Listing.get(db.Key.from_path('Listing', id))
-        self.response.out.write('Listing: ' + item);
+        self.response.out.write('Listing: %s' % vars(item));
 
 
 def main():
@@ -145,8 +176,8 @@ def main():
       ('/', make_static_handler('../templates/index.html')),
       ('/add', ListingFormPage),
       ('/list', ListPage),
-      (r'^listing/(?P<listing_key>[^\.^/]+)/$', ListingDetailsPage),
-      (r'^listing/(?P<listing_key>[^\.^/]+)/results/$', ListingFormPage),
+      ('/edit', ListingEditPage),
+      ('/listing', ListingDetailsPage),      
       ],
       debug=('Development' in os.environ['SERVER_SOFTWARE']))
   wsgiref.handlers.CGIHandler().run(application)

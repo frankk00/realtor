@@ -30,21 +30,27 @@ class Listing(GeoModel):
   
   See http://nces.ed.gov/ccd/psadd.asp for details on attributes.
   """
-  address = db.StringProperty()
+  address = db.PostalAddressProperty()
   price = db.FloatProperty()
   baths = db.FloatProperty()
   beds = db.FloatProperty()
   size = db.FloatProperty()
   phone_number = db.StringProperty()
-  comments = db.StringProperty()
+  comments = db.StringProperty(multiline=True)
   property_type =  db.StringProperty()
   amenities = db.StringProperty()
+  author = db.UserProperty()
+  createDate = db.DateTimeProperty(auto_now_add=True)
+  lastUpdateDate = db.DateTimeProperty(auto_now_add=True)
+  status = db.StringProperty()
+  tag = db.CategoryProperty()
+  photo = db.BlobProperty()
   
   @staticmethod
   def public_attributes():
     """Returns a set of simple attributes on listing entities."""
     return [
-      'address', 'price', 'baths', 'beds', 'size', 'phone_number', 'comments', 'property_type', 'amenities'
+      'address', 'price', 'baths', 'beds', 'size', 'phone_number', 'comments', 'property_type', 'amenities', 'author', 'status'
     ]
     
   def set_location(self):

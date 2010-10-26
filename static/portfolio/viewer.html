@@ -1,0 +1,66 @@
+<html>
+<head>
+<title></title>
+<meta http-equiv="X-UA-Compatible" content="chrome=1">
+<link rel="stylesheet" type="text/css" href="/static/portfolio/editor.css" />
+<link rel="stylesheet" type="text/css" href="/static/portfolio/presenter.css" />
+<link rel="stylesheet" type="text/css" href="/static/portfolio/viewer.css" />
+<link rel="stylesheet" type="text/css" href="/static/portfolio/menu.css" />
+<link rel="stylesheet" type="text/css" href="/static/portfolio/introduction.css" />
+<script src="/static/portfolio/functions.js"></script>
+<script src="/static/portfolio/mocklist.js"></script>
+<script src="/static/portfolio/mock.js"></script>
+<script src="/static/portfolio/menu.js"></script>
+<script src="/static/portfolio/presenter.js"></script>
+<script src="/static/portfolio/editor.js"></script>
+<script src="/static/portfolio/introduction.js"></script>
+<script>
+// If you're poking around looking to figure out how to hotlink images, sorry -
+// we try to prevent that. If you think our choice is bone-headed, please email.
+
+var throbber;
+function load() {
+  var mockdata = {{ json }};
+  var mocklist = MockList.fromJSON(mockdata);
+  var presenter = new Presenter(mocklist, document.body);
+  var show_editor = isValidBrowser() || (BrowserDetect.browser == "Safari" && BrowserDetect.version <= 5);
+  var editor = (mockdata.key && show_editor) ? new Editor(mocklist) : null;
+  var menu = new Menu(mocklist, {{ user }});
+
+  mocklist.addListener(function(e) {
+    if (e.type == MockList.EVENT_MOCKLOADED) {
+      $('loading').style.opacity = 0;
+      $('message').style.top = 60;
+      setText($('message_text'), "Still loading");
+    } else if (e.type == MockList.EVENT_ALLMOCKSLOADED) {
+      clearInterval(throbber);
+      setTimeout(function() {
+        $('loading').style.opacity = 0;
+        $('message').style.opacity = 0;
+        $('message').style.top = '0px';
+        setTimeout(function() {
+          $('loading').style.display = 'none';
+          }, 700);
+        }, 300);
+    }
+  });
+  
+  $('message').style.opacity = 1;
+  $('message').style.top = '50%';
+  throbber = setInterval(function() {
+    var len = ($('throbber').innerHTML.length + 1) % 4;
+    var str = '';
+    for (var i = 0; i < len; i++) {
+      str += '.';
+    }
+    $('throbber').innerHTML = str;
+  }, 500);
+}
+</script>
+</head>
+<body onload="load();" style="width:100%; height:100%; margin:0;">
+<iframe src="about:blank" class="manual-iframe" name="image_iframe" id="image_iframe"></iframe>
+<div id="loading"></div>
+<div id="message"><span id="message_text">Loading</span><span id="throbber">...</span></div>
+</body>
+</html>

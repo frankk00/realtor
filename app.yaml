@@ -17,6 +17,12 @@ handlers:
 
 - url: /s/.*
   script: handlers/service.py
+  
+- url: /portfolio/*
+  script: handlers/portfolio.py  
+  
+- url: /portfolio/*.*
+  script: handlers/portfolio.py  
 
 - url: .*
   script: handlers/main.py

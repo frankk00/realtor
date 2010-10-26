@@ -1,0 +1,37 @@
+<html>
+<head>
+<title>Portfolio</title>
+<meta http-equiv="X-UA-Compatible" content="chrome=1">
+<link rel="stylesheet" type="text/css" href="/static/portfolio/editor.css" />
+<link rel="stylesheet" type="text/css" href="/static/portfolio/presenter.css" />
+<link rel="stylesheet" type="text/css" href="/static/portfolio/menu.css" />
+<link rel="stylesheet" type="text/css" href="/static/portfolio/introduction.css" />
+<script src="/static/portfolio/functions.js"></script>
+<script src="/static/portfolio/mocklist.js"></script>
+<script src="/static/portfolio/mock.js"></script>
+<script src="/static/portfolio/presenter.js"></script>
+<script src="/static/portfolio/editor.js"></script>
+<script src="/static/portfolio/introduction.js"></script>
+<script src="/static/portfolio/menu.js"></script>
+<script>
+// GLOBAL ---------------------------------------------------------------------
+function load() {
+  var mocklist = new MockList();
+  var introduction = new Introduction(mocklist);
+  var editor = new Editor(mocklist);
+  var presenter = new Presenter(mocklist, document.body);
+  var menu = new Menu(mocklist, '{% user %}');
+}
+
+</script>
+</head>
+<body onload="load();" style="width:100%; height:100%; margin:0;">
+<div id="intro-bg">
+  <div id="introduction" class="intro-messagebubble">
+    <div class="intro-icon"></div>
+    <div id="instructions" class="p2 compat">Just <span class="highlight">drag your image files onto this page</span>, and we'll do the rest.</div>
+    <div id="lowbrowser" class="p2 uncompat">Sorry, our uploader doesn't yet work on your browser (which doesn't support drag and drop file uploads). <a href="http://www.google.com/landing/chrome/beta/">Chrome 6</a> or <a href="http://www.mozilla.com/firefox/beta/">Firefox 4</a> will work best.</div>
+  </div>
+</div>
+</body>
+</html>
