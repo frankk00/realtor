@@ -4,14 +4,6 @@
     <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
     <title>Realtor.IO</title>
     <link rel='stylesheet' id='font-face-css'  href='http://www.wpbundle.com/wp-content/themes/wpb/fonts/load.css?ver=3.0.1' type='text/css' media='all' /> 
-    <link type="text/css" rel="stylesheet" href="http://yui.yahooapis.com/2.7.0/build/reset/reset-min.css"/>
-    <link type="text/css" rel="stylesheet" href="/static/jqueryui-theme/jquery-ui-1.7.2.custom.css"/>
-    <link type="text/css" rel="stylesheet" href="/static/css/app.css"/>
-    <script type="text/javascript" src="/static/js/jquery.min.js"></script>
-    <script type="text/javascript" src="/static/js/jquery-ui.min.js"></script>
-    <script type="text/javascript" src="http://www.google.com/jsapi?key={% jsapi_key %}"></script>
-    <script type="text/javascript" src="/static/lib/jquery.scrollTo-1.4.2-min.js"></script>
-    <script type="text/javascript" src="/static/lib/microtemplate.js"></script>
     <link href='http://fonts.googleapis.com/css?family=Lobster&subset=latin' rel='stylesheet' type='text/css'> 
 	<link href='http://fonts.googleapis.com/css?family=Droid+Sans:regular,bold' rel='stylesheet' type='text/css'> 
 	<script language="JavaScript" src="http://j.maxmind.com/app/geoip.js"></script>
@@ -40,17 +32,6 @@ function load() {
 </script>
 </head>
 <body onload="load();" style="width:100%; height:100%; margin:0;">
-    <div id="login-bar">
-      	<strong><a href="/">Home</a></strong>
-        &nbsp;|&nbsp;
-      {% if current_user %}
-        <strong>{{ current_user.email }}</strong>
-        &nbsp;|&nbsp;
-        <a href="{% logout_url %}">Sign out</a>
-      {% else %}
-        <a href="{% login_url %}">Sign in</a>
-      {% endif %}
-    </div>
       
 
 <div id="intro-bg">
