@@ -23,10 +23,34 @@
                         $('form').jqTransform({imgPath:'/static/jqtransformplugin/img/'});
                 });
         </script>
+    <script type="text/javascript">
+      google.load('visualization', '1', {packages: ['table']});
+    </script>
+    
+   <script type="text/javascript">
+    function drawVisualization() {
+      // Create and populate the data table.
+      var JSONObject = {
+          cols: [{id: 'task', label: 'Task', type: 'string'},
+              {id: 'hours', label: 'Hours per Day', type: 'number'}],
+          rows: [{c:[{v: 'Work', p: {'style': 'border: 7px solid orange;'}}, {v: 11}]},
+              {c:[{v: 'Eat'}, {v: 2}]},
+              {c:[{v: 'Commute'}, {v: 2, f: '2.000'}]}]};
+    
+      var data = new google.visualization.DataTable(JSONObject, 0.5);
+    
+      // Create and draw the visualization.
+      visualization = new google.visualization.Table(document.getElementById('table'));
+      visualization.draw(data, {'allowHtml': true});
+    }
+    
 
+    google.setOnLoadCallback(drawVisualization);
+    </script>
+    
 
   </head>
-  <body onunload="GUnload()">
+  <body>
     <div id="login-bar">
       	<strong><a href="/">Home</a></strong>
         &nbsp;|&nbsp;
@@ -38,24 +62,11 @@
         <a href="{% login_url %}">Sign in</a>
       {% endif %}
     </div>
- 
- <h1>Create Listing</h1>
-
- <form name="form" action="/add" method="POST" align="center">
- 	<h2>Create Listing</h2>
-	<div class="rowElem"><label>Address</label> <input type="text" name="address"></input></div>
-	<div class="rowElem"><label>Baths</label> <input type="text" name="baths"></input></div>
-	<div class="rowElem"><label>Beds</label> <input type="text" name="beds"></input></div>
-	<div class="rowElem"><label>Price</label> <input type="text" name="price"></input></div>
-	<div class="rowElem"><label>Phone</label> <input type="text" name="phone_number"></input></div>
-	<div class="rowElem"><label>Size</label> <input type="text" name="size"></input></div>
-	<div class="rowElem"><label>Comments</label> <input type="text" name="comments"></input></div>
-	<div class="rowElem"><label>Property Type</label> <input type="text" name="property_type"></input></div>
-	<div class="rowElem"><label>Amenities</label><input type="text" name="amenities"></input></div>
 
 
-<input type="submit" name="submit"></input></div>
- </form>
+ 	<h2>My Listings</h2>
+
+    <div id="table"></div>
  
       
       <div id="footer">

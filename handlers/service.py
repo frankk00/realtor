@@ -52,10 +52,11 @@ class SearchService(webapp.RequestHandler):
     
     self.response.headers['Content-Type'] = 'application/json'
     query_type = self.request.get('type')
+    user = self.request.get('user');
     
-    if not query_type in ['proximity', 'bounds']:
+    if not query_type in ['proximity', 'bounds', 'user', 'default']:
       return _simple_error('type parameter must be '
-                           'one of "proximity", "bounds".',
+                           'one of "proximity", "bounds", "user".',
                            code=400)
     
     if query_type == 'proximity':
@@ -94,6 +95,14 @@ class SearchService(webapp.RequestHandler):
       
       # Natural ordering chosen to be public school enrollment.
       #base_query.order('-')
+      
+      if query_type == 'user':
+          query_type = 'bounds';
+          maxresults = 2000;
+          bounds = geotypes.Box(float(46.70973594407157),
+                              float(-73.2568359375),
+                              float(25.681137335685307),
+                              float(-127.44140624999999))
       
       # Perform proximity or bounds fetch.
       if query_type == 'proximity':

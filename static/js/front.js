@@ -665,21 +665,21 @@ function formatDistance(distance) {
 $(function() {
     $("#add-listing-toggle").live('click', function(event) {
     	
-    	var popWindow = '<div class="messagepop pop"><form method="POST" id="new_message" action="/add" enctype="multipart/form-data"><table><tr><th><label for="id_address">Address:</label></th><td><input type="text" name="address" id="id_address" /></td></tr>' + 
+    	var popWindow = '<div class="messagepop pop"><form method="POST" id="new_message" action="/add" enctype="multipart/form-data"><table><tr><th><label for="id_address">Address:</label></th><td><textarea type="textarea" name="address" id="id_address" /></td></tr>' + 
     	'<tr><th><label for="id_price">Price:</label></th><td><input type="text" name="price" id="id_price" /></td></tr> ' + 
     	'<tr><th><label for="id_baths">Baths:</label></th><td><input type="text" name="baths" id="id_baths" /></td></tr> ' + 
     	'<tr><th><label for="id_beds">Beds:</label></th><td><input type="text" name="beds" id="id_beds" /></td></tr> ' + 
     	'<tr><th><label for="id_size">Size:</label></th><td><input type="text" name="size" id="id_size" /></td></tr> ' + 
-    	'<tr><th><label for="id_phone_number">Phone number:</label></th><td><input type="text" name="phone_number" id="id_phone_number" /></td></tr> ' + 
-    	'<tr><th><label for="id_comments">Comments:</label></th><td><textarea name="comments" id="id_comments" rows="3" cols="60"></textarea></td></tr> ' + 
-    	'<tr><th><label for="id_property_type">Property type:</label></th><td><input type="text" name="property_type" id="id_property_type" /></td></tr> ' + 
+    	//'<tr><th><label for="id_phone_number">Phone number:</label></th><td><input type="text" name="phone_number" id="id_phone_number" /></td></tr> ' + 
+    	'<tr><th><label for="id_comments">Description:</label></th><td><textarea name="comments" id="id_comments" rows="6" cols="40"></textarea></td></tr> ' + 
+    	'<tr><th><label for="id_property_type">Property Type:</label></th><td><input type="text" name="property_type" id="id_property_type" /></td></tr> ' + 
     	'<tr><th><label for="id_amenities">Amenities:</label></th><td><input type="text" name="amenities" id="id_amenities" /></td></tr> ' + 
-    	'<tr><th><label for="id_author">Author:</label></th><td><input type="text" name="author" id="id_author" /></td></tr> ' + 
-    	'<tr><th><label for="id_photo">Photo: <input type="file" name="photo" id="id_photo"/></td></tr>' + 
+    	// '<tr><th><label for="id_author">Author:</label></th><td><input type="text" name="author" id="id_author" /></td></tr> ' + 
+    	// '<tr><th><label for="id_photo">Photo: <input type="file" name="photo" id="id_photo"/></td></tr>' + 
     	'<!--<tr><th><label for="id_createDate">CreateDate:</label></th><td><input type="text" name="createDate" id="id_createDate" /></td></tr> ' + 
     	'<tr><th><label for="id_lastUpdateDate">LastUpdateDate:</label></th><td><input type="text" name="lastUpdateDate" id="id_lastUpdateDate" /></td></tr> ' + 
-    	'<tr><th><label for="id_status">Status:</label></th><td><input type="text" name="status" id="id_status" /></td></tr> ' + 
-    	'<tr><th><label for="id_tag">Tag:</label></th><td><input type="text" name="tag" id="id_tag" /></td></tr>--></table><input type="submit" value="Send Message" name="commit" id="message_submit"/> or <a class="close" href="/">Cancel</a></form></div>';
+    	// '<tr><th><label for="id_status">Status:</label></th><td><input type="text" name="status" id="id_status" /></td></tr> ' + 
+    	'<tr><th><label for="id_tag">Tags:</label></th><td><input type="text" name="tag" id="id_tag" /></td></tr>--></table><input type="submit" value="Send Message" name="commit" id="message_submit"/> or <a class="close" href="/">Cancel</a></form></div>';
     	
         $(this).addClass("selected").parent().append(popWindow);
         $(".pop").slideFadeToggle()

@@ -76,17 +76,24 @@ class ListingForm(djangoforms.ModelForm):
 class ListPage(webapp.RequestHandler):
     def get(self):
         query = db.GqlQuery("SELECT * FROM Listing ORDER BY address")
+        """
         for item in query:
             self.response.out.write('<a href="/edit?id=%d">Edit</a> %s' % (item.key().id(), item.address))
+        """
+        template_file = "../templates/list.html"
+        self.response.out.write(template.render(
+          os.path.join(os.path.dirname(__file__), template_file),
+          {'current_user': users.get_current_user(),
+           'list' : query}))
   
 class ListingFormPage(webapp.RequestHandler):
-    def get(self):
+    def get2(self):
         template_file = "../templates/add.html"
         self.response.out.write(template.render(
           os.path.join(os.path.dirname(__file__), template_file),
           {'current_user': users.get_current_user()}))
     
-    def get2(self):
+    def get(self):
         self.response.out.write('<html><body>'
                                 '<form method="POST" '
                                 'action="/add">'
@@ -114,7 +121,8 @@ class ListingFormPage(webapp.RequestHandler):
             entity = None
             
             photo = self.request.get("photo")
-            entity.photo = db.Blob(photo)
+            if photo:
+                entity.photo = db.Blob(photo)
             
             entity = data.save(commit=False)
             entity.location = geoPoint

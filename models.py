@@ -53,7 +53,7 @@ class Listing(GeoModel):
   def public_attributes():
     """Returns a set of simple attributes on listing entities."""
     return [
-      'address', 'price', 'baths', 'beds', 'size', 'phone_number', 'comments', 'property_type', 'amenities', 'author', 'createDate', 'lastUpdateDate', 'status', 'tag', 'portfolio'
+      'address', 'price', 'baths', 'beds', 'size', 'phone_number', 'comments', 'property_type', 'amenities', 'status', 'tag', 'portfolio'
     ]
     
   def set_location(self):

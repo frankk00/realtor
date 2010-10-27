@@ -13,7 +13,7 @@ function Menu(mocklist, user) {
   this.node_ = createElement('div', 'home', document.body);
 
   this.node_new_ = createElement('a', 'menuitem', this.node_);
-  this.node_new_.href = '/';
+  this.node_new_.href = '/p';
 
   this.node_menu_ = createElement('select', 'menuitem', this.node_);
   var opt = new Option("Your mocks:", "", false, false);
@@ -21,8 +21,8 @@ function Menu(mocklist, user) {
   addEventListener(this.node_menu_, 'change', this.menuChanged_.bind(this));
 
   if (this.signed_in_) {
-    this.node_name_ = createElement('a', 'menuitem', this.node_);
-    setText(this.node_name_, this.username_);
+    // this.node_name_ = createElement('a', 'menuitem', this.node_);
+    // setText(this.node_name_, this.username_);
 
     this.node_sign_ = createElement('a', 'menuitem', this.node_);
     this.node_sign_.href = this.sign_out_url_;

@@ -200,7 +200,7 @@ class View(webapp.RequestHandler):
     logging.info(path)
     self.response.out.write(template.render(path, {
       'json': json,
-      'current_user' : simplejson.dumps(getOwnerDetails(self, owner))
+      'user' : simplejson.dumps(getOwnerDetails(self, owner))
     }))
 
     view = MockListView()

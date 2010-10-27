@@ -26,7 +26,7 @@ function load() {
   var introduction = new Introduction(mocklist);
   var editor = new Editor(mocklist);
   var presenter = new Presenter(mocklist, document.body);
-  var menu = new Menu(mocklist, '<% current_user %}');
+  var menu = new Menu(mocklist, {{ user }});
 }
 
 </script>
@@ -41,16 +41,6 @@ function load() {
     <div id="lowbrowser" class="p2 uncompat">Sorry, our uploader doesn't yet work on your browser (which doesn't support drag and drop file uploads). <a href="http://www.google.com/landing/chrome/beta/">Chrome 6</a> or <a href="http://www.mozilla.com/firefox/beta/">Firefox 4</a> will work best.</div>
   </div>
 </div>
-
-
-     
-      <div id="footer">
-        <p align="center">Copyright &copy; 2010 SocialEstates.com (<a href="http://socialestates.com" target="_blank">socialestates.com</a>)</p>
-      </div>
-    
-    <div id="end">
-
-    </div>
     
   </body>
 </html>
