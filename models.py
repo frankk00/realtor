@@ -44,13 +44,16 @@ class Listing(GeoModel):
   lastUpdateDate = db.DateTimeProperty(auto_now_add=True)
   status = db.StringProperty()
   tag = db.CategoryProperty()
-  photo = db.BlobProperty()
+  portfolio = db.BlobProperty()
+  
+  def __unicode__(self):
+        return self.address
   
   @staticmethod
   def public_attributes():
     """Returns a set of simple attributes on listing entities."""
     return [
-      'address', 'price', 'baths', 'beds', 'size', 'phone_number', 'comments', 'property_type', 'amenities', 'author', 'status'
+      'address', 'price', 'baths', 'beds', 'size', 'phone_number', 'comments', 'property_type', 'amenities', 'author', 'createDate', 'lastUpdateDate', 'status', 'tag', 'portfolio'
     ]
     
   def set_location(self):

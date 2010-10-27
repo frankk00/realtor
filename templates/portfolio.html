@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title>Realtor.IO</title>
+    <link rel='stylesheet' id='font-face-css'  href='http://www.wpbundle.com/wp-content/themes/wpb/fonts/load.css?ver=3.0.1' type='text/css' media='all' /> 
+    <link type="text/css" rel="stylesheet" href="http://yui.yahooapis.com/2.7.0/build/reset/reset-min.css"/>
+    <link type="text/css" rel="stylesheet" href="/static/jqueryui-theme/jquery-ui-1.7.2.custom.css"/>
+    <link type="text/css" rel="stylesheet" href="/static/css/app.css"/>
+    <script type="text/javascript" src="/static/js/jquery.min.js"></script>
+    <script type="text/javascript" src="/static/js/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="http://www.google.com/jsapi?key={% jsapi_key %}"></script>
+    <script type="text/javascript" src="/static/lib/jquery.scrollTo-1.4.2-min.js"></script>
+    <script type="text/javascript" src="/static/lib/microtemplate.js"></script>
+    <link href='http://fonts.googleapis.com/css?family=Lobster&subset=latin' rel='stylesheet' type='text/css'> 
+	<link href='http://fonts.googleapis.com/css?family=Droid+Sans:regular,bold' rel='stylesheet' type='text/css'> 
+	<script language="JavaScript" src="http://j.maxmind.com/app/geoip.js"></script>
+     <meta http-equiv="X-UA-Compatible" content="chrome=1">
+<link rel="stylesheet" type="text/css" href="/static/portfolio/editor.css" />
+<link rel="stylesheet" type="text/css" href="/static/portfolio/presenter.css" />
+<link rel="stylesheet" type="text/css" href="/static/portfolio/menu.css" />
+<link rel="stylesheet" type="text/css" href="/static/portfolio/introduction.css" />
+<script src="/static/portfolio/functions.js"></script>
+<script src="/static/portfolio/mocklist.js"></script>
+<script src="/static/portfolio/mock.js"></script>
+<script src="/static/portfolio/presenter.js"></script>
+<script src="/static/portfolio/editor.js"></script>
+<script src="/static/portfolio/introduction.js"></script>
+<script src="/static/portfolio/menu.js"></script>
+<script>
+// GLOBAL ---------------------------------------------------------------------
+function load() {
+  var mocklist = new MockList();
+  var introduction = new Introduction(mocklist);
+  var editor = new Editor(mocklist);
+  var presenter = new Presenter(mocklist, document.body);
+  var menu = new Menu(mocklist, '<% current_user %}');
+}
+
+</script>
+</head>
+<body onload="load();" style="width:100%; height:100%; margin:0;">
+    <div id="login-bar">
+      	<strong><a href="/">Home</a></strong>
+        &nbsp;|&nbsp;
+      {% if current_user %}
+        <strong>{{ current_user.email }}</strong>
+        &nbsp;|&nbsp;
+        <a href="{% logout_url %}">Sign out</a>
+      {% else %}
+        <a href="{% login_url %}">Sign in</a>
+      {% endif %}
+    </div>
+      
+
+<div id="intro-bg">
+  <div id="introduction" class="intro-messagebubble">
+    <div class="intro-icon"></div>
+    <div id="instructions" class="p2 compat">Just <span class="highlight">drag your image files onto this page</span>, and we'll do the rest.</div>
+    <div id="lowbrowser" class="p2 uncompat">Sorry, our uploader doesn't yet work on your browser (which doesn't support drag and drop file uploads). <a href="http://www.google.com/landing/chrome/beta/">Chrome 6</a> or <a href="http://www.mozilla.com/firefox/beta/">Firefox 4</a> will work best.</div>
+  </div>
+</div>
+
+
+     
+      <div id="footer">
+        <p align="center">Copyright &copy; 2010 SocialEstates.com (<a href="http://socialestates.com" target="_blank">socialestates.com</a>)</p>
+      </div>
+    
+    <div id="end">
+
+    </div>
+    
+  </body>
+</html>
+ 

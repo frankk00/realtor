@@ -49,7 +49,6 @@ Presenter.opacity = function(node, opacity) {
 
 Presenter.prototype.mockListListener = function(e) {
   if (e.type == MockList.EVENT_ALLMOCKSLOADED) {
-    window.console.log("all mocks loaded");
     this.orderNodes_();
   } else if (e.type == MockList.EVENT_SELECTION) {
     this.layout();

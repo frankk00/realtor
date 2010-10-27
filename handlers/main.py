@@ -81,6 +81,12 @@ class ListPage(webapp.RequestHandler):
   
 class ListingFormPage(webapp.RequestHandler):
     def get(self):
+        template_file = "../templates/add.html"
+        self.response.out.write(template.render(
+          os.path.join(os.path.dirname(__file__), template_file),
+          {'current_user': users.get_current_user()}))
+    
+    def get2(self):
         self.response.out.write('<html><body>'
                                 '<form method="POST" '
                                 'action="/add">'
@@ -163,7 +169,8 @@ class ListingEditPage(webapp.RequestHandler):
                                   '<input type="hidden" name="id" value="%s">'
                                   '<input type="submit">'
                                   '</form></body></html>' % id)
-        
+          
+          
 class ListingDetailsPage(webapp.RequestHandler):
     def get (self):
         id = int(self.request.get('id'))

@@ -112,9 +112,9 @@ def getOwner(handler, generate=False):
 
 def generateSignIn(handler, owner):
   if owner and owner.user_id:
-    return "%s (<a href=\"%s\">Sign out</a>)" % (owner.name, users.create_logout_url("/"))
+    return "%s (<a href=\"%s\">Logout</a>)" % (owner.name, users.create_logout_url("/"))
   else:
-    return "<a href=\"%s\">Sign in</a>" % users.create_login_url("/signin/?d=" + handler.request.path)
+    return "<a href=\"%s\">Login</a>" % users.create_login_url("/signin/?d=" + handler.request.path)
 
 def getOwnerDetails(handler, owner):
   mocklists = []
@@ -152,7 +152,7 @@ def cacheMockNames(mocklist):
 # MAIN ------------------------------------------------------------------------
 class MainPage(webapp.RequestHandler):
   def get(self):
-    path = os.path.join(os.path.dirname(__file__), "index.html")
+    path = os.path.join(os.path.dirname(__file__), "../templates/portfolio.html")
     # Get owner details
     owner = getOwner(self, False)
 
@@ -200,7 +200,7 @@ class View(webapp.RequestHandler):
     logging.info(path)
     self.response.out.write(template.render(path, {
       'json': json,
-      'user' : simplejson.dumps(getOwnerDetails(self, owner))
+      'current_user' : simplejson.dumps(getOwnerDetails(self, owner))
     }))
 
     view = MockListView()
@@ -400,7 +400,9 @@ application = webapp.WSGIApplication([
   ('/portfolio/api/manualupload/', ManualUpload),
   ('/portfolio/signin/', SignIn),
   ('/portfolio/', MainPage),
-   ('/portfolio', MainPage),
+  ('/portfolio', MainPage),
+  ('/p/', MainPage),
+  ('/p', MainPage),
 ], debug=False)
 
 def main():

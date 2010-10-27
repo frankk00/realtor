@@ -28,11 +28,11 @@ var TYPES = {
 
 // Only perform proximity searches on 
 // geocode accuracy.
-var MIN_PROXIMITY_SEARCH_GEOCODE_ACCURACY = 6;
+var MIN_PROXIMITY_SEARCH_GEOCODE_ACCURACY = 5;
 
-var MAX_PROXIMITY_SEARCH_MILES = 50;
-var MAX_PROXIMITY_SEARCH_RESULTS = 10;
-var MAX_BOUNDS_SEARCH_RESULTS = 25;
+var MAX_PROXIMITY_SEARCH_MILES = 100;
+var MAX_PROXIMITY_SEARCH_RESULTS = 100;
+var MAX_BOUNDS_SEARCH_RESULTS = 100;
 
 var MIN_GRADE_TAUGHT = -1; // PK
 var MAX_GRADE_TAUGHT = 12; // 12th grade
@@ -75,6 +75,7 @@ var g_programmaticPanning = false; // Temporary moveend disable switch.
 var g_mapPanListener = null;
 
 
+
 /**
  * On body/APIs ready callback.
  */
@@ -87,15 +88,53 @@ function init() {
  * Creates the Google Maps API instance.
  */
 function initMap() {
-  map = new google.maps.Map2($('#map').get(0));
+	mapOptions = {}
+	  if (GBrowserIsCompatible()) {
+		  var mapOptions = {
+		    googleBarOptions : {
+		      style : "new",
+		      adsOptions: {
+		        client: "partner-google-maps-api",
+		        channel: "AdSense for Search channel",
+		        adsafe: "high",
+		        language: "en"
+		      }
+		    }
+		  }
+	  }
+	
+  map = new google.maps.Map2($('#map').get(0), mapOptions);
+  http://code.google.com/apis/maps/documentation/javascript/v2/reference.html#GMap2.enableGoogleBar
   map.setCenter(new google.maps.LatLng(39,-96), 4);
- // map.panTo();
-  //map.savePosition();
-
+  map.enableGoogleBar();
   geocoder = new google.maps.ClientGeocoder();
   
   // anything besides default will not work in list view
   map.setUIToDefault();
+  
+  var publisher_id = "partner-pub-6540327609469868";
+
+  var adsManagerOptions = {
+    maxAdsOnMap : 2,
+    style: G_ADSMANAGER_STYLE_ADUNIT,
+    // The channel field is optional - replace this field with a channel number 
+    // for Google AdSense tracking
+    channel: 'your_channel_id'  
+  };
+
+  adsManager = new GAdsManager(map, publisher_id, adsManagerOptions);
+  adsManager.enable();
+  
+  if (geoip_city() != null && geoip_region() != null && geoip_country_name() != null) {
+		centerPt = geoip_city() + ', ' + geoip_region() + " " + geoip_country_name();
+		$('#search-query').val(centerPt);
+		YUI().use('history', function(Y) {
+			 
+			var history = new Y.HistoryHash();
+			history.addValue('q', centerPt);
+		});
+		doGeocodeAndSearch();
+	}
 }
 
 /**
@@ -283,6 +322,11 @@ function doGeocodeAndSearch() {
       $('#loading').css('visibility', 'hidden');
     } else {
       $('#search-query').val(response.Placemark[0].address);
+      YUI().use('history', function(Y) {
+    	  
+    		var history = new Y.HistoryHash();
+    		history.addValue('q', response.Placemark[0].address);
+    	});
       var bounds = new google.maps.LatLngBounds(
           new google.maps.LatLng(
             response.Placemark[0].ExtendedData.LatLonBox.south,

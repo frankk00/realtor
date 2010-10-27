@@ -1,5 +1,5 @@
 application: realtor-io 
-version: 1 
+version: 2 
 runtime: python
 api_version: 1
 
@@ -22,7 +22,16 @@ handlers:
   script: handlers/portfolio.py  
   
 - url: /portfolio/*.*
-  script: handlers/portfolio.py  
+  script: handlers/portfolio.py 
+  
+- url: /portfolio
+  script: handlers/portfolio.py
+  
+- url: /p
+  script: handlers/portfolio.py
+  
+- url: /p/*
+  script: handlers/portfolio.py
 
 - url: .*
   script: handlers/main.py

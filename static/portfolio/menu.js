@@ -40,7 +40,7 @@ function Menu(mocklist, user) {
 
   // TODO: Defer this until after page load.
   this.node_tweet_ = createElement('div', '', this.node_share_);
-  this.node_tweet_.innerHTML = '<a href="http://twitter.com/share" class="twitter-share-button" data-text="I liked this:" data-count="none">Share on Twitter</a>';
+  this.node_tweet_.innerHTML = '';
 
   var twitter_script = document.createElement('script');
   twitter_script.src = 'http://platform.twitter.com/widgets.js';
@@ -78,7 +78,7 @@ Menu.prototype.getMockListById = function(id) {
 }
 
 Menu.prototype.update_ = function() {
-  window.console.log("Menu updating");
+  // window.console.log("Menu updating");
   
   this.node_new_.style.display = (this.page_mocklist_.id) ? 'inline-block' : 'none';
   this.node_share_.style.display = (this.page_mocklist_.id) ? 'block' : 'none';

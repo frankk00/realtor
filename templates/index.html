@@ -1,20 +1,5 @@
 <!DOCTYPE html>
 <html>
-<!---
-  Copyright 2009 Roman Nurik
-
-  Licensed under the Apache License, Version 2.0 (the "License");
-  you may not use this file except in compliance with the License.
-  You may obtain a copy of the License at
-
-      http://www.apache.org/licenses/LICENSE-2.0
-
-  Unless required by applicable law or agreed to in writing, software
-  distributed under the License is distributed on an "AS IS" BASIS,
-  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-  See the License for the specific language governing permissions and
-  limitations under the License.
--->
   <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
     <title>Realtor.IO</title>
@@ -22,6 +7,9 @@
     <link type="text/css" rel="stylesheet" href="http://yui.yahooapis.com/2.7.0/build/reset/reset-min.css"/>
     <link type="text/css" rel="stylesheet" href="/static/jqueryui-theme/jquery-ui-1.7.2.custom.css"/>
     <link type="text/css" rel="stylesheet" href="/static/css/app.css"/>
+	<script type="text/javascript" charset="utf-8"
+	        src="http://yui.yahooapis.com/3.2.0/build/yui/yui-min.js">
+	</script>
     <script type="text/javascript" src="/static/js/jquery.min.js"></script>
     <script type="text/javascript" src="/static/js/jquery-ui.min.js"></script>
     <script type="text/javascript" src="http://www.google.com/jsapi?key={% jsapi_key %}"></script>
@@ -38,38 +26,44 @@
   </head>
   <body onunload="GUnload()">
     <div id="login-bar">
-      	<strong><a href="/">Home</a></strong>
+      	<a href="/">Home</a>
         &nbsp;|&nbsp;
-      {% if current_user %}
-        <strong>{{ current_user.email }}</strong>
-        &nbsp;|&nbsp;
-        <a href="{% logout_url %}">Sign out</a>
-      {% else %}
-        <a href="{% login_url %}">Sign in</a>
-      {% endif %}
+        
+        	<strong>
+            {% if current_user %}
+            <a id="add-listing-toggle" href="#">Add Listings (FREE!)</a>
+            {% else %}
+            <a id="add-listing-toggle" href="{% login_url %}">Add Listings (FREE!)</a>
+            {% endif %}
+            </strong>
+            &nbsp;|&nbsp;
+            
+        	<strong>
+            <a id="add-listing-toggle" href="#">Create Portfolios (WOW!)</a>
+            </strong>
+            &nbsp;|&nbsp;
+        
+	      {% if current_user %}      
+	        {{ current_user.email }}
+	        &nbsp;|&nbsp;
+	        <a href="{% logout_url %}">Logout</a>
+	      {% else %}
+	        <a href="{% login_url %}">Login</a>
+	      {% endif %}
     </div>
     
     <div id="container">
             <h2><a href="/">Realtor.IO</a></h2>
             
-            <div id="intro">
+            <div style="background-color: white; color: black; width: 270px">
             <p>
-            Real Estate + Web 2.0 = I <img src="http://iamneurotic.com/wp-content/themes/neurotic/images/heart-icon.gif"></img> Realtor.IO<br>
-            <script language="JavaScript">
-            document.write(geoip_city());
-            document.write(', ');
-            document.write(geoip_region());
-            document.write(' ');
-            document.write(geoip_country_name());
-            </script>
+            Real Estate + Web 2.0 = I <img src="http://iamneurotic.com/wp-content/themes/neurotic/images/heart-icon.gif"> Realtor.IO<br>
             </p>
             </div>
             
-            {% if current_user %}
-            <div id="add-toggle"><strong><a id="add-listing-toggle" href="#">Add Listing (FREE!)</a></strong></div>
-            {% else %}
-            <div id="add-toggle"><strong><a id="add-listing-toggle" href="{% login_url %}">Add Listing (FREE!)</a></strong></div>
-            {% endif %}
+              <div id="view-toggle">
+		        <a href="#">List view &raquo;</a>
+		      </div>
         
         <form action="" onsubmit="doGeocodeAndSearch(); return false;">
           <div id="search-container">
@@ -81,6 +75,7 @@
             <img id="loading" src="/static/images/loading.gif" alt="Loading..."/>
           </div>
           
+          <!--  
           <div id="advanced-options-container">
             <div id="search-error">&nbsp;</div>
             <a id="advanced-options-toggle" href="#">Advanced Options</a>
@@ -99,12 +94,10 @@
               </div>
             </div>
           </div>
+          -->
         </form>
       </div>
-      
-      <div id="view-toggle">
-        <a href="#">List view &raquo;</a>
-      </div>
+  
       
       <div id="content" class="clearfix">
         <div id="list-view-container">
@@ -118,7 +111,6 @@
         <div id="map-container">
           <div id="map"></div>
         </div>
-      </div>
       
       <div id="footer">
         <p align="center">Copyright &copy; 2010 SocialEstates.com (<a href="http://socialestates.com" target="_blank">socialestates.com</a>)</p>
