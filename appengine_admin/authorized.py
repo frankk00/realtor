@@ -2,6 +2,14 @@
 from google.appengine.api import oauth
 import logging
 
+def get_current_user():
+    user = users.get_current_user();
+    logging.info("User (users): %s" % user)
+    if not user:
+        ouser = oauth.get_current_user();
+        logging.info("User (oauth): %s" % user)
+    return user
+
 def role(role):
     def wrapper(handler_method):
         def check_login(self, *args, **kwargs):
@@ -21,14 +29,12 @@ def role(role):
                 else:
                     self.error(403) # User didn't meet role.
             """
-            try:
-                # Get the db.User that represents the user on whose behalf the
-                # consumer is making this request.
-                user = oauth.get_current_user()
-                logging.info("User: %s" % user)
+            user = get_current_user()
+            logging.info("User: %s" % user)
+            if user:
                 handler_method(self, *args, **kwargs)
 
-            except oauth.OAuthRequestError, e:
+            else:
                 logging.warn("ERROR: %s" % e)
                 
         return check_login

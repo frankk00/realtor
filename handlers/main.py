@@ -26,6 +26,19 @@ template.register_template_library(
 template.register_template_library('templatelib')
 
 
+
+
+
+
+
+def get_current_user():
+    user = users.get_current_user();
+    logging.info("User (users): %s" % user)
+    if not user:
+        ouser = oauth.get_current_user();
+        logging.info("User (oauth): %s" % user)
+    return user
+
 class NotFoundHandler(restful.Controller):
     def get(self):
         logging.debug("NotFoundHandler#get")
@@ -44,7 +57,7 @@ def make_static_handler(template_file):
     def get(self):
       self.response.out.write(template.render(
           os.path.join(os.path.dirname(__file__), template_file),
-          {'current_user': users.get_current_user()}))
+          {'current_user': get_current_user()}))
   
   return StaticHandler
   
@@ -70,7 +83,7 @@ class ListingDetailsPage(webapp.RequestHandler):
         listing = Listing.get(db.Key.from_path('Listing', id))
         self.response.out.write(template.render(
           os.path.join(os.path.dirname(__file__), template_file),
-          {'current_user': oauth.get_current_user(), 'listing' : listing}))
+          {'current_user': get_current_user(), 'listing' : listing}))
     
         
     

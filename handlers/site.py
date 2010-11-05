@@ -63,6 +63,7 @@ from models import AuthRequest
 from models import Profile
 import sys
 import config
+from common import decorator
 
 
 sys.path.append(".")
@@ -141,7 +142,7 @@ class UnauthorizedHandler(webapp.RequestHandler):
 
 class RootHandler(restful.Controller):
     
-    @authorized.force_ssl(only_admin=True)
+    @decorator.login_required
     def get(self):
         user = users.get_current_user()
         logging.debug("RootHandler#get")
@@ -156,7 +157,7 @@ class RootHandler(restful.Controller):
         
 class ServiceHandler(restful.Controller):
         
-    @authorized.force_ssl(only_admin=True)
+    @authorized.force_ssl(only_admin=False)
     def get(self, service_slug, year=None, month=None, day=None):
         user = users.get_current_user()
         logging.debug("ServiceHandler#get")
@@ -205,7 +206,7 @@ class ServiceHandler(restful.Controller):
         
 class DebugHandler(restful.Controller):
     
-    @authorized.force_ssl()
+    @decorator.login_required
     def get(self):
         logging.debug("DebugHandler %s", self.request.scheme)
         td = default_template_data()
@@ -303,8 +304,7 @@ class DocumentationHandler(restful.Controller):
             
 class VerifyAccessHandler(restful.Controller):
     
-    @authorized.force_ssl()
-    @authorized.role("admin")
+    @decorator.login_required
     def get(self):
         oauth_token = self.request.get('oauth_token', default_value=None)
         oauth_verifier = self.request.get('oauth_verifier', default_value=None)
@@ -347,7 +347,7 @@ class VerifyAccessHandler(restful.Controller):
             
 class ProfileHandler(restful.Controller):
     
-    @authorized.force_ssl()
+    @decorator.login_required
     def get(self):
         
         consumer_key = 'anonymous'
