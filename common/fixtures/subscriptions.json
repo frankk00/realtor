@@ -1,0 +1,200 @@
+[
+
+ {"pk": "stream/popular@socialestates.com/presence/inbox/unpopular@socialestates.com/overview",
+  "model": "common.subscription",
+  "fields": {"topic": "stream/popular@socialestates.com/presence",
+             "subscriber": "unpopular@socialestates.com",
+             "state": "subscribed",
+             "target": "inbox/unpopular@socialestates.com/overview"
+             }
+  },
+ {"pk": "stream/popular@socialestates.com/presence/inbox/celebrity@socialestates.com/overview",
+  "model": "common.subscription",
+  "fields": {"topic": "stream/popular@socialestates.com/presence",
+             "subscriber": "celebrity@socialestates.com",
+             "state": "subscribed",
+             "target": "inbox/celebrity@socialestates.com/overview"
+             }
+  },
+ {"pk": "stream/popular@socialestates.com/presence/inbox/annoying@socialestates.com/overview",
+  "model": "common.subscription",
+  "fields": {"topic": "stream/popular@socialestates.com/presence",
+             "subscriber": "annoying@socialestates.com",
+             "state": "subscribed",
+             "target": "inbox/annoying@socialestates.com/overview"
+             }
+  },
+ {"pk": "stream/popular@socialestates.com/presence/inbox/obligated@socialestates.com/overview",
+  "model": "common.subscription",
+  "fields": {"topic": "stream/popular@socialestates.com/presence",
+             "subscriber": "obligated@socialestates.com",
+             "state": "subscribed",
+             "target": "inbox/obligated@socialestates.com/overview"
+             }
+  },
+ {"pk": "stream/popular@socialestates.com/comments/inbox/unpopular@socialestates.com/overview",
+  "model": "common.subscription",
+  "fields": {"topic": "stream/popular@socialestates.com/comments",
+             "subscriber": "unpopular@socialestates.com",
+             "state": "subscribed",
+             "target": "inbox/unpopular@socialestates.com/overview"
+             }
+  },
+ {"pk": "stream/popular@socialestates.com/comments/inbox/celebrity@socialestates.com/overview",
+  "model": "common.subscription",
+  "fields": {"topic": "stream/popular@socialestates.com/comments",
+             "subscriber": "celebrity@socialestates.com",
+             "state": "subscribed",
+             "target": "inbox/celebrity@socialestates.com/overview"
+             }
+  },
+ {"pk": "stream/popular@socialestates.com/comments/inbox/annoying@socialestates.com/overview",
+  "model": "common.subscription",
+  "fields": {"topic": "stream/popular@socialestates.com/comments",
+             "subscriber": "annoying@socialestates.com",
+             "state": "subscribed",
+             "target": "inbox/annoying@socialestates.com/overview"
+             }
+  },
+ {"pk": "stream/popular@socialestates.com/comments/inbox/obligated@socialestates.com/overview",
+  "model": "common.subscription",
+  "fields": {"topic": "stream/popular@socialestates.com/comments",
+             "subscriber": "obligated@socialestates.com",
+             "state": "subscribed",
+             "target": "inbox/obligated@socialestates.com/overview"
+             }
+  },
+  
+
+ {"pk": "stream/girlfriend@socialestates.com/presence/inbox/annoying@socialestates.com/overview",
+  "model": "common.subscription",
+  "fields": {"topic": "stream/girlfriend@socialestates.com/presence",
+             "subscriber": "annoying@socialestates.com",
+             "state": "pending",
+             "target": "inbox/annoying@socialestates.com/overview"
+             }
+  },
+ {"pk": "stream/girlfriend@socialestates.com/comments/inbox/annoying@socialestates.com/overview",
+  "model": "common.subscription",
+  "fields": {"topic": "stream/girlfriend@socialestates.com/comments",
+             "subscriber": "annoying@socialestates.com",
+             "state": "pending",
+             "target": "inbox/annoying@socialestates.com/overview"
+             }
+  },
+ {"pk": "stream/girlfriend@socialestates.com/presence/inbox/boyfriend@socialestates.com/overview",
+  "model": "common.subscription",
+  "fields": {"topic": "stream/girlfriend@socialestates.com/presence",
+             "subscriber": "boyfriend@socialestates.com",
+             "state": "subscribed",
+             "target": "inbox/boyfriend@socialestates.com/overview"
+             }
+  },
+ {"pk": "stream/girlfriend@socialestates.com/comments/inbox/boyfriend@socialestates.com/overview",
+  "model": "common.subscription",
+  "fields": {"topic": "stream/girlfriend@socialestates.com/comments",
+             "subscriber": "boyfriend@socialestates.com",
+             "state": "subscribed",
+             "target": "inbox/boyfriend@socialestates.com/overview"
+             }
+  },
+
+
+ {"pk": "stream/root@socialestates.com/presence/inbox/popular@socialestates.com/overview",
+  "model": "common.subscription",
+  "fields": {"topic": "stream/root@socialestates.com/presence",
+             "subscriber": "popular@socialestates.com",
+             "state": "subscribed",
+             "target": "inbox/popular@socialestates.com/overview"
+             }
+  },
+ {"pk": "stream/root@socialestates.com/presence/inbox/unpopular@socialestates.com/overview",
+  "model": "common.subscription",
+  "fields": {"topic": "stream/root@socialestates.com/presence",
+             "subscriber": "unpopular@socialestates.com",
+             "state": "subscribed",
+             "target": "inbox/unpopular@socialestates.com/overview"
+             }
+  },
+ {"pk": "stream/root@socialestates.com/presence/inbox/celebrity@socialestates.com/overview",
+  "model": "common.subscription",
+  "fields": {"topic": "stream/root@socialestates.com/presence",
+             "subscriber": "celebrity@socialestates.com",
+             "state": "subscribed",
+             "target": "inbox/celebrity@socialestates.com/overview"
+             }
+  },
+ {"pk": "stream/root@socialestates.com/presence/inbox/annoying@socialestates.com/overview",
+  "model": "common.subscription",
+  "fields": {"topic": "stream/root@socialestates.com/presence",
+             "subscriber": "annoying@socialestates.com",
+             "state": "subscribed",
+             "target": "inbox/annoying@socialestates.com/overview"
+             }
+  },
+ {"pk": "stream/root@socialestates.com/presence/inbox/obligated@socialestates.com/overview",
+  "model": "common.subscription",
+  "fields": {"topic": "stream/root@socialestates.com/presence",
+             "subscriber": "obligated@socialestates.com",
+             "state": "subscribed",
+             "target": "inbox/obligated@socialestates.com/overview"
+             }
+  },
+
+ {"pk": "stream/#popular@socialestates.com/presence/inbox/popular@socialestates.com/overview",
+  "model": "common.subscription",
+  "fields": {"topic": "stream/#popular@socialestates.com/presence",
+             "subscriber": "popular@socialestates.com",
+             "state": "subscribed",
+             "target": "inbox/popular@socialestates.com/overview"
+             }
+  },
+ {"pk": "stream/#popular@socialestates.com/presence/inbox/unpopular@socialestates.com/overview",
+  "model": "common.subscription",
+  "fields": {"topic": "stream/#popular@socialestates.com/presence",
+             "subscriber": "unpopular@socialestates.com",
+             "state": "subscribed",
+             "target": "inbox/unpopular@socialestates.com/overview"
+             }
+  },
+  {"pk": "stream/#support@socialestates.com/presence/inbox/root@socialestates.com/overview",
+  "model": "common.subscription",
+  "fields": {"topic": "stream/#support@socialestates.com/presence",
+             "subscriber": "root@socialestates.com",
+             "state": "subscribed",
+             "target": "inbox/root@socialestates.com/overview"
+             }
+  },
+ {"pk": "stream/root@socialestates.com/comments/inbox/celebrity@socialestates.com/overview",
+  "model": "common.subscription",
+  "fields": {"topic": "stream/root@socialestates.com/comments",
+             "subscriber": "celebrity@socialestates.com",
+             "state": "subscribed",
+             "target": "inbox/celebrity@socialestates.com/overview"
+             }
+  },
+ {"pk": "stream/popular@socialestates.com/presence/12345/inbox/unpopular@socialestates.com/overview",
+  "model": "common.subscription",
+  "fields": {"topic": "stream/popular@socialestates.com/presence/12345",
+             "subscriber": "unpopular@socialestates.com",
+             "state": "subscribed",
+             "target": "inbox/unpopular@socialestates.com/overview"
+             }
+  },
+ {"pk": "stream/girlfriend@socialestates.com/presence/16961/inbox/boyfriend@socialestates.com/overview",
+  "model": "common.subscription",
+  "fields": {"topic": "stream/girlfriend@socialestates.com/presence/16961",
+             "subscriber": "boyfriend@socialestates.com",
+             "state": "subscribed",
+             "target": "inbox/boyfriend@socialestates.com/overview"
+             }
+  },
+ {"pk": "firehose/pshb/http://example.com/pshb",
+  "model": "common.subscription",
+  "fields": {"topic": "firehose/pshb",
+             "subscriber": "root@socialestates.com",
+             "state": "subscribed",
+             "target": "http://example.com/pshb"
+             }
+  }
+]

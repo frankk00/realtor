@@ -1,0 +1,171 @@
+{% extends "common_base.html" %}
+{% block content %}
+
+<style>
+
+h2 {
+
+color: #000000;
+
+}
+
+h2.h2-section {
+
+color: #000000;
+
+}
+
+div.content {
+
+	background-color: white;
+	width: 80%;
+	margin: 2px auto;
+	border: 3px solid #21303b;
+	font-color: black;
+ 
+	/*shadow*/
+	-webkit-box-shadow: 10px 10px 10px #000;
+	-moz-box-shadow: 10px 10px 10px #000;
+
+ 
+	/*rounded corners*/
+	-webkit-border-radius: 20px;
+	-moz-border-radius: 20px;
+	border-radius: 20px;
+
+}
+
+div.price {
+	font-size: 80px;
+	font-color: black;
+	line-height: 70px;
+	font-family: Helvetica, sans-serif;
+	font-weight: bold;
+	text-align: center;
+	text-transform: uppercase;
+
+	background-color: white;
+	width: 400px;
+	margin: 100px auto;
+	border: 3px dashed #21303b;
+ 
+	/*shadow*/
+	-webkit-box-shadow: 10px 10px 10px #000;
+	-moz-box-shadow: 10px 10px 10px #000;
+	box-shadow: 10px 10px 10px #000;
+ 
+	/*rounded corners*/
+	-webkit-border-radius: 20px;
+	-moz-border-radius: 20px;
+	border-radius: 20px;
+}
+
+
+</style>
+
+<div id="container">
+
+<div class="menu">
+<ul>
+<li class="l1"><a href="#">CSS3</a></li>
+<li class="l2"><a href="#">is really</a></li>
+
+<li class="l3"><a href="#">powerful</a></li>
+</ul>
+<span>by PV.M Garage</span> 
+</div>
+
+<div class="bubble">
+<div class="rectangle"><h2 id="h2-gallery" class="h2-section">{{ listing.address }}</h2></div>
+<div class="triangle-l"></div>
+<div class="triangle-r"></div>
+<div class="info">
+<h2>I Have Used Only CSS, friends!</h2>
+<p>
+For this tutorial I have used some new properties of the CSS3. You can realize a nice 3D effect using only CSS, it's really fantastic.<br />It doesn't work with IE!
+
+</p>
+<p>
+<a href="http://www.pvmgarage.com/en/2010/01/10/">Go to the tutorial!</a>
+</p>
+</div>
+</div>
+
+</div>
+
+
+
+<div class="content" align="center"> 
+ 
+	
+<table border="0" align="center" width="80%" cellspacing="50" cellpadding="50">
+<tr>
+<td colspan="3" align="center"><h2 id="h2-gallery" class="h2-section">{{ listing.address }}</h2></td>
+</tr>
+<tr>
+	<td><img src="/static/images/tag-icon.png"></img></td>
+	<td>Price</td>
+	<td>${{ listing.price }}</td>
+</tr>
+<tr>
+	<td><img src="/images/bath.png"></img></td>
+	<td>Bath(s)</td>
+	<td>{{ listing.baths }}</td>
+</tr>
+<tr>
+	<td><img src="/images/bed.png"></img></td>
+	<td>Bed(s)</td>
+	<td>{{ listing.beds }}</td>
+</tr>
+
+</tr>
+
+
+</table>
+	    
+            
+<div id="property-photos"> 
+ 
+    <h2 id="h2-gallery" class="h2-section">Photo Gallery</h2> 
+ 
+    <div class="box3 clearfix"> 
+        
+                
+        <a href="http://agent.socialestates.com/wp-content/uploads/aa2.jpg" title="" rel="prettyPhoto[gallery]"> 
+            <img width="290" height="218" src="http://agent.socialestates.com/wp-content/uploads/aa2-290x218.jpg" class="attachment-dco-gallery" alt="aa2" title="aa2" />        </a> 
+        
+        
+    </div><!-- end box3 --> 
+ 
+</div><!-- end attachments --> 
+ 
+	    
+	    
+<h2 id="h2-location" class="h2-section">Property Location</h2> 
+ 
+<div id="property-location" class="box3 clearfix"> 
+ 
+	<div id="mapsearch">Loading...</div> 
+ 
+</div> 
+ 
+ 
+	    
+<div id="property-contact"> 
+			
+    <h2 id="h2-contact" class="h2-section">Contact</h2> 
+    
+    <div class="box3 clearfix"> 
+    	
+				
+		<div class="contact-description clearfix"> 
+		
+		    <img alt='' src='http://1.gravatar.com/avatar/7c8b4713fee5abeca72ce195690d8182?s=120&amp;d=http%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D120&amp;r=G' class='avatar avatar-120 photo' height='120' width='120' />		    
+		    <h4><a href="http://agent.socialestates.com/?author=4" title="Posts by fo">fo</a></h4> 
+		    
+		    <p></p> 
+		
+		</div> 
+</div> 
+
+{% endblock %}

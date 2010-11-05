@@ -28,11 +28,11 @@ var TYPES = {
 
 // Only perform proximity searches on 
 // geocode accuracy.
-var MIN_PROXIMITY_SEARCH_GEOCODE_ACCURACY = 5;
+var MIN_PROXIMITY_SEARCH_GEOCODE_ACCURACY = 6;
 
-var MAX_PROXIMITY_SEARCH_MILES = 100;
-var MAX_PROXIMITY_SEARCH_RESULTS = 100;
-var MAX_BOUNDS_SEARCH_RESULTS = 100;
+var MAX_PROXIMITY_SEARCH_MILES = 50;
+var MAX_PROXIMITY_SEARCH_RESULTS = 10;
+var MAX_BOUNDS_SEARCH_RESULTS = 25;
 
 var MIN_GRADE_TAUGHT = -1; // PK
 var MAX_GRADE_TAUGHT = 12; // 12th grade
@@ -75,7 +75,6 @@ var g_programmaticPanning = false; // Temporary moveend disable switch.
 var g_mapPanListener = null;
 
 
-
 /**
  * On body/APIs ready callback.
  */
@@ -88,53 +87,13 @@ function init() {
  * Creates the Google Maps API instance.
  */
 function initMap() {
-	mapOptions = {}
-	  if (GBrowserIsCompatible()) {
-		  var mapOptions = {
-		    googleBarOptions : {
-		      style : "new",
-		      adsOptions: {
-		        client: "partner-google-maps-api",
-		        channel: "AdSense for Search channel",
-		        adsafe: "high",
-		        language: "en"
-		      }
-		    }
-		  }
-	  }
-	
-  map = new google.maps.Map2($('#map').get(0), mapOptions);
-  http://code.google.com/apis/maps/documentation/javascript/v2/reference.html#GMap2.enableGoogleBar
+  map = new google.maps.Map2($('#map').get(0));
   map.setCenter(new google.maps.LatLng(39,-96), 4);
-  map.enableGoogleBar();
+
   geocoder = new google.maps.ClientGeocoder();
   
   // anything besides default will not work in list view
   map.setUIToDefault();
-  
-  var publisher_id = "partner-pub-6540327609469868";
-
-  var adsManagerOptions = {
-    maxAdsOnMap : 2,
-    style: G_ADSMANAGER_STYLE_ADUNIT,
-    // The channel field is optional - replace this field with a channel number 
-    // for Google AdSense tracking
-    channel: 'your_channel_id'  
-  };
-
-  adsManager = new GAdsManager(map, publisher_id, adsManagerOptions);
-  adsManager.enable();
-  
-  if (geoip_city() != null && geoip_region() != null && geoip_country_name() != null) {
-		centerPt = geoip_city() + ', ' + geoip_region() + " " + geoip_country_name();
-		$('#search-query').val(centerPt);
-		YUI().use('history', function(Y) {
-			 
-			var history = new Y.HistoryHash();
-			history.addValue('q', centerPt);
-		});
-		doGeocodeAndSearch();
-	}
 }
 
 /**
@@ -322,11 +281,6 @@ function doGeocodeAndSearch() {
       $('#loading').css('visibility', 'hidden');
     } else {
       $('#search-query').val(response.Placemark[0].address);
-      YUI().use('history', function(Y) {
-    	  
-    		var history = new Y.HistoryHash();
-    		history.addValue('q', response.Placemark[0].address);
-    	});
       var bounds = new google.maps.LatLngBounds(
           new google.maps.LatLng(
             response.Placemark[0].ExtendedData.LatLonBox.south,
@@ -665,21 +619,20 @@ function formatDistance(distance) {
 $(function() {
     $("#add-listing-toggle").live('click', function(event) {
     	
-    	var popWindow = '<div class="messagepop pop"><form method="POST" id="new_message" action="/add" enctype="multipart/form-data"><table><tr><th><label for="id_address">Address: </label></th><td><textarea type="textarea" name="address" id="id_address" /></td></tr>' + 
-    	'<tr><th><label for="id_price">Price: </label></th><td><input type="text" name="price" id="id_price" /></td></tr> ' + 
-    	'<tr><th><label for="id_baths">Baths: </label></th><td><input type="text" name="baths" id="id_baths" /></td></tr> ' + 
-    	'<tr><th><label for="id_beds">Beds: </label></th><td><input type="text" name="beds" id="id_beds" /></td></tr> ' + 
-    	'<tr><th><label for="id_size">Size: </label></th><td><input type="text" name="size" id="id_size" /></td></tr> ' + 
-    	//'<tr><th><label for="id_phone_number">Phone number:</label></th><td><input type="text" name="phone_number" id="id_phone_number" /></td></tr> ' + 
-    	'<tr><th><label for="id_comments">Description: </label></th><td><textarea name="comments" id="id_comments" rows="6" cols="40"></textarea></td></tr> ' + 
-    	'<tr><th><label for="id_property_type">Property Type: </label></th><td><input type="text" name="property_type" id="id_property_type" /></td></tr> ' + 
-    	'<tr><th><label for="id_amenities">Amenities: </label></th><td><input type="text" name="amenities" id="id_amenities" /></td></tr> ' + 
-    	// '<tr><th><label for="id_author">Author: </label></th><td><input type="text" name="author" id="id_author" /></td></tr> ' + 
-    	// '<tr><th><label for="id_photo">Photo: <input type="file" name="photo" id="id_photo"/></td></tr>' + 
-    	// '<!--<tr><th><label for="id_createDate">CreateDate: </label></th><td><input type="text" name="createDate" id="id_createDate" /></td></tr> ' + 
-    	// '<tr><th><label for="id_lastUpdateDate">LastUpdateDate: </label></th><td><input type="text" name="lastUpdateDate" id="id_lastUpdateDate" /></td></tr> ' + 
-    	// '<tr><th><label for="id_status">Status:</label></th><td><input type="text" name="status" id="id_status" /></td></tr> ' + 
-    	// '<tr><th><label for="id_tag">Tags:< /label></th><td><input type="text" name="tag" id="id_tag" /></td></tr>--></table><input type="submit" value="Send Message" name="commit" id="message_submit"/> or <a class="close" href="/">Cancel</a></form></div>';
+    	var popWindow = '<div class="messagepop pop"><form method="POST" id="new_message" action="/add"><table><tr><th><label for="id_address">Address:</label></th><td><input type="text" name="address" id="id_address" /></td></tr>' + 
+    	'<tr><th><label for="id_price">Price:</label></th><td><input type="text" name="price" id="id_price" /></td></tr> ' + 
+    	'<tr><th><label for="id_baths">Baths:</label></th><td><input type="text" name="baths" id="id_baths" /></td></tr> ' + 
+    	'<tr><th><label for="id_beds">Beds:</label></th><td><input type="text" name="beds" id="id_beds" /></td></tr> ' + 
+    	'<tr><th><label for="id_size">Size:</label></th><td><input type="text" name="size" id="id_size" /></td></tr> ' + 
+    	'<tr><th><label for="id_phone_number">Phone number:</label></th><td><input type="text" name="phone_number" id="id_phone_number" /></td></tr> ' + 
+    	'<tr><th><label for="id_comments">Comments:</label></th><td><input type="text" name="comments" id="id_comments" /></td></tr> ' + 
+    	'<tr><th><label for="id_property_type">Property type:</label></th><td><input type="text" name="property_type" id="id_property_type" /></td></tr> ' + 
+    	'<tr><th><label for="id_amenities">Amenities:</label></th><td><input type="text" name="amenities" id="id_amenities" /></td></tr> ' + 
+    	'<tr><th><label for="id_author">Author:</label></th><td><input type="text" name="author" id="id_author" /></td></tr> ' + 
+    	'<tr><th><label for="id_createDate">CreateDate:</label></th><td><input type="text" name="createDate" id="id_createDate" /></td></tr> ' + 
+    	'<tr><th><label for="id_lastUpdateDate">LastUpdateDate:</label></th><td><input type="text" name="lastUpdateDate" id="id_lastUpdateDate" /></td></tr> ' + 
+    	'<tr><th><label for="id_status">Status:</label></th><td><input type="text" name="status" id="id_status" /></td></tr> ' + 
+    	'<tr><th><label for="id_tag">Tag:</label></th><td><input type="text" name="tag" id="id_tag" /></td></tr></table><input type="submit" value="Send Message" name="commit" id="message_submit"/> or <a class="close" href="/">Cancel</a></form></div>';
     	
         $(this).addClass("selected").parent().append(popWindow);
         $(".pop").slideFadeToggle()

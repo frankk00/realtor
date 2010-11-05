@@ -1,0 +1,58 @@
+[{"pk": "relation/email/obligated@socialestates.com/obligated@socialestates.com",
+  "model": "common.Relation",
+  "fields": {"owner": "obligated@socialestates.com",
+             "target": "obligated@socialestates.com",
+             "relation": "email"
+             }
+  },
+ {"pk": "relation/email/popular@socialestates.com/popular@socialestates.com",
+  "model": "common.Relation",
+  "fields": {"owner": "popular@socialestates.com",
+             "target": "popular@socialestates.com",
+             "relation": "email"
+             }
+  },
+ {"pk": "relation/email/unpopular@socialestates.com/unpopular@socialestates.com",
+  "model": "common.Relation",
+  "fields": {"owner": "unpopular@socialestates.com",
+             "target": "unpopular@socialestates.com",
+             "relation": "email"
+             }
+  },
+ {"pk": "relation/email/celebrity@socialestates.com/celebrity@socialestates.com",
+  "model": "common.Relation",
+  "fields": {"owner": "celebrity@socialestates.com",
+             "target": "celebrity@socialestates.com",
+             "relation": "email"
+             }
+  },
+ {"pk": "relation/email/CapitalPunishment@socialestates.com/CapitalPunishment@socialestates.com",
+  "model": "common.Relation",
+  "fields": {"owner": "CapitalPunishment@socialestates.com",
+             "target": "CapitalPunishment@socialestates.com",
+             "relation": "email"
+             }
+  },
+ {"pk": "relation/email/boyfriend@socialestates.com/boyfriend@socialestates.com",
+  "model": "common.Relation",
+  "fields": {"owner": "boyfriend@socialestates.com",
+             "target": "boyfriend@socialestates.com",
+             "relation": "email"
+             }
+  },
+ {"pk": "relation/email/girlfriend@socialestates.com/girlfriend@socialestates.com",
+  "model": "common.Relation",
+  "fields": {"owner": "girlfriend@socialestates.com",
+             "target": "girlfriend@socialestates.com",
+             "relation": "email"
+             }
+  },
+ {"pk": "relation/email/hotness@socialestates.com/hotness@foobar.com",
+  "model": "common.Relation",
+  "fields": {"owner": "hotness@socialestates.com",
+             "target": "hotness@foobar.com",
+             "relation": "email"
+             }
+  }
+]
+

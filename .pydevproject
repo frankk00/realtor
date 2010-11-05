@@ -8,9 +8,7 @@
 <key>GOOGLE_APP_ENGINE</key>
 <value>/Users/felipera/development/google_appengine_py</value>
 </pydev_variables_property>
-<pydev_pathproperty name="org.python.pydev.PROJECT_SOURCE_PATH">
-<path>/realtor/src</path>
-</pydev_pathproperty>
+
 <pydev_pathproperty name="org.python.pydev.PROJECT_EXTERNAL_SOURCE_PATH">
 <path>${GOOGLE_APP_ENGINE}</path>
 <path>${GOOGLE_APP_ENGINE}/lib/django</path>

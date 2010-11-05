@@ -1,23 +1,3 @@
-#!/usr/bin/python2.5
-#
-# Copyright 2009 Roman Nurik
-#
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-#     http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
-
-"""Service /s/* request handlers."""
-
-__author__ = 'api.roman.public@gmail.com (Roman Nurik)'
-
 import os
 import sys
 import wsgiref.handlers
@@ -38,7 +18,7 @@ def _merge_dicts(*args):
 
 
 class SearchService(webapp.RequestHandler):
-  """Handler for public school search requests."""
+  """Handler for search requests."""
   def get(self):
     def _simple_error(message, code=400):
       self.error(code)
@@ -96,23 +76,25 @@ class SearchService(webapp.RequestHandler):
       # Natural ordering chosen to be public school enrollment.
       #base_query.order('-')
       
-      if query_type == 'user':
-          query_type = 'bounds';
-          maxresults = 2000;
-          bounds = geotypes.Box(float(46.70973594407157),
-                              float(-73.2568359375),
-                              float(25.681137335685307),
-                              float(-127.44140624999999))
-      
       # Perform proximity or bounds fetch.
       if query_type == 'proximity':
-        results = Listing.proximity_fetch(
-            base_query,
-            center, max_results=max_results, max_distance=max_distance)
+        results = Listing.proximity_fetch(base_query, center, max_results=max_results, max_distance=max_distance)
+      
       elif query_type == 'bounds':
-        results = Listing.bounding_box_fetch(
-            base_query,
-            bounds, max_results=max_results)
+        results = Listing.bounding_box_fetch(base_query, bounds, max_results=max_results)
+        
+      elif query_type == 'user':
+          limit = self.request.get("limit")
+          offset = self.request.get("offset")
+          if not limit:
+              limit = 1000
+          else:
+              limit = int(limit)
+          if not offset:
+              offset = 0
+          else:
+              offset = int(offset)
+          results = base_query.fetch(limit, offset);
       
       public_attrs = Listing.public_attributes()
       
@@ -127,7 +109,7 @@ class SearchService(webapp.RequestHandler):
 
       self.response.out.write(simplejson.dumps({
         'status': 'success',
-        'results': results_obj
+        'results': results_obj,
       }))
     except:
       return _simple_error(str(sys.exc_info()[1]), code=500)

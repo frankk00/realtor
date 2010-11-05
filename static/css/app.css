@@ -375,8 +375,10 @@ a:active {
 }
 
 #footer p {
-  margin-bottom: 1.2em;
+  margin-bottom: 1.0em;
   align: center;
+  font:1.0em Droid Sans, Georgia, Palatino, Palatino Linotype, Droid Sans, Times, Times New Roman, serif; 
+  font-color: #9EC5ED;
 }
 
 
@@ -532,4 +534,3 @@ a:link, a:active, a:visited {
 a:hover {
 	text-decoration:none;
 }
-

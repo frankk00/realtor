@@ -1,0 +1,44 @@
+[{"pk": "relation/im_account/obligated@socialestates.com/obligated@socialestates.com",
+  "model": "common.Relation",
+  "fields": {"owner": "obligated@socialestates.com",
+             "target": "obligated@socialestates.com",
+             "relation": "im_account"
+             }
+  },
+ {"pk": "relation/im_account/popular@socialestates.com/popular@socialestates.com",
+  "model": "common.Relation",
+  "fields": {"owner": "popular@socialestates.com",
+             "target": "popular@socialestates.com",
+             "relation": "im_account"
+             }
+  },
+ {"pk": "relation/im_account/unpopular@socialestates.com/unpopular@socialestates.com",
+  "model": "common.Relation",
+  "fields": {"owner": "unpopular@socialestates.com",
+             "target": "unpopular@socialestates.com",
+             "relation": "im_account"
+             }
+  },
+ {"pk": "relation/im_account/celebrity@socialestates.com/celebrity@socialestates.com",
+  "model": "common.Relation",
+  "fields": {"owner": "celebrity@socialestates.com",
+             "target": "celebrity@socialestates.com",
+             "relation": "im_account"
+             }
+  },
+ {"pk": "relation/im_account/girlfriend@socialestates.com/girlfriend@socialestates.com",
+  "model": "common.Relation",
+  "fields": {"owner": "girlfriend@socialestates.com",
+             "target": "girlfriend@socialestates.com",
+             "relation": "im_account"
+             }
+  },
+ {"pk": "relation/im_account/boyfriend@socialestates.com/boyfriend@socialestates.com",
+  "model": "common.Relation",
+  "fields": {"owner": "boyfriend@socialestates.com",
+             "target": "boyfriend@socialestates.com",
+             "relation": "im_account"
+             }
+  }
+]
+

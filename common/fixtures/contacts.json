@@ -1,0 +1,212 @@
+[{"pk": "relation/contact/obligated@socialestates.com/annoying@socialestates.com",
+  "model": "common.Relation",
+  "fields": {"owner": "obligated@socialestates.com",
+             "target": "annoying@socialestates.com",
+             "relation": "contact"
+             }
+  },
+ {"pk": "relation/contact/obligated@socialestates.com/root@socialestates.com",
+  "model": "common.Relation",
+  "fields": {"owner": "obligated@socialestates.com",
+             "target": "root@socialestates.com",
+             "relation": "contact"
+             }
+  },
+ {"pk": "relation/contact/obligated@socialestates.com/popular@socialestates.com",
+  "model": "common.Relation",
+  "fields": {"owner": "obligated@socialestates.com",
+             "target": "popular@socialestates.com",
+             "relation": "contact"
+             }
+  },
+ {"pk": "relation/contact/obligated@socialestates.com/celebrity@socialestates.com",
+  "model": "common.Relation",
+  "fields": {"owner": "obligated@socialestates.com",
+             "target": "celebrity@socialestates.com",
+             "relation": "contact"
+             }
+  },
+ {"pk": "relation/contact/root@socialestates.com/celebrity@socialestates.com",
+  "model": "common.Relation",
+  "fields": {"owner": "root@socialestates.com",
+             "target": "celebrity@socialestates.com",
+             "relation": "contact"
+             }
+  },
+   {"pk": "relation/contact/root@socialestates.com/popular@socialestates.com",
+  "model": "common.Relation",
+  "fields": {"owner": "root@socialestates.com",
+             "target": "popular@socialestates.com",
+             "relation": "contact"
+             }
+  },
+ {"pk": "relation/contact/annoying@socialestates.com/obligated@socialestates.com",
+  "model": "common.Relation",
+  "fields": {"owner": "annoying@socialestates.com",
+             "target": "obligated@socialestates.com",
+             "relation": "contact"
+             }
+  },
+  {"pk": "relation/contact/annoying@socialestates.com/root@socialestates.com",
+  "model": "common.Relation",
+  "fields": {"owner": "annoying@socialestates.com",
+             "target": "root@socialestates.com",
+             "relation": "contact"
+             }
+  },
+  {"pk": "relation/contact/annoying@socialestates.com/popular@socialestates.com",
+  "model": "common.Relation",
+  "fields": {"owner": "annoying@socialestates.com",
+             "target": "popular@socialestates.com",
+             "relation": "contact"
+             }
+  },
+ {"pk": "relation/contact/annoying@socialestates.com/celebrity@socialestates.com",
+  "model": "common.Relation",
+  "fields": {"owner": "annoying@socialestates.com",
+             "target": "celebrity@socialestates.com",
+             "relation": "contact"
+             }
+  },
+ {"pk": "relation/contact/annoying@socialestates.com/CapitalPunishment@socialestates.com",
+  "model": "common.Relation",
+  "fields": {"owner": "annoying@socialestates.com",
+             "target": "CapitalPunishment@socialestates.com",
+             "relation": "contact"
+             }
+  },
+ {"pk": "relation/contact/CapitalPunishment@socialestates.com/root@socialestates.com",
+  "model": "common.Relation",
+  "fields": {"owner": "CapitalPunishment@socialestates.com",
+             "target": "root@socialestates.com",
+             "relation": "contact"
+             }
+  },
+ {"pk": "relation/contact/unpopular@socialestates.com/root@socialestates.com",
+  "model": "common.Relation",
+  "fields": {"owner": "unpopular@socialestates.com",
+             "target": "root@socialestates.com",
+             "relation": "contact"
+             }
+  },
+ {"pk": "relation/contact/unpopular@socialestates.com/deleted@socialestates.com",
+  "model": "common.Relation",
+  "fields": {"owner": "unpopular@socialestates.com",
+             "target": "deleted@socialestates.com",
+             "relation": "contact"
+             }
+  },
+ {"pk": "relation/contact/unpopular@socialestates.com/popular@socialestates.com",
+  "model": "common.Relation",
+  "fields": {"owner": "unpopular@socialestates.com",
+             "target": "popular@socialestates.com",
+             "relation": "contact"
+             }
+  },
+ {"pk": "relation/contact/unpopular@socialestates.com/celebrity@socialestates.com",
+  "model": "common.Relation",
+  "fields": {"owner": "unpopular@socialestates.com",
+             "target": "celebrity@socialestates.com",
+             "relation": "contact"
+             }
+  },
+ {"pk": "relation/contact/unpopular@socialestates.com/CapitalPunishment@socialestates.com",
+  "model": "common.Relation",
+  "fields": {"owner": "unpopular@socialestates.com",
+             "target": "CapitalPunishment@socialestates.com",
+             "relation": "contact"
+             }
+  },
+ {"pk": "relation/contact/popular@socialestates.com/root@socialestates.com",
+  "model": "common.Relation",
+  "fields": {"owner": "popular@socialestates.com",
+             "target": "root@socialestates.com",
+             "relation": "contact"
+             }
+  },
+ {"pk": "relation/contact/popular@socialestates.com/celebrity@socialestates.com",
+  "model": "common.Relation",
+  "fields": {"owner": "popular@socialestates.com",
+             "target": "celebrity@socialestates.com",
+             "relation": "contact"
+             }
+  },
+ {"pk": "relation/contact/celebrity@socialestates.com/root@socialestates.com",
+  "model": "common.Relation",
+  "fields": {"owner": "celebrity@socialestates.com",
+             "target": "root@socialestates.com",
+             "relation": "contact"
+             }
+  },
+ {"pk": "relation/contact/celebrity@socialestates.com/popular@socialestates.com",
+  "model": "common.Relation",
+  "fields": {"owner": "celebrity@socialestates.com",
+             "target": "popular@socialestates.com",
+             "relation": "contact"
+             }
+  },
+ {"pk": "relation/contact/boyfriend@socialestates.com/girlfriend@socialestates.com",
+  "model": "common.Relation",
+  "fields": {"owner": "boyfriend@socialestates.com",
+             "target": "girlfriend@socialestates.com",
+             "relation": "contact"
+             }
+  },
+ {"pk": "relation/contact/girlfriend@socialestates.com/boyfriend@socialestates.com",
+  "model": "common.Relation",
+  "fields": {"owner": "girlfriend@socialestates.com",
+             "target": "boyfriend@socialestates.com",
+             "relation": "contact"
+             }
+  },
+ {"pk": "relation/contact/otherboyfriend@socialestates.com/girlfriend@socialestates.com",
+  "model": "common.Relation",
+  "fields": {"owner": "otherboyfriend@socialestates.com",
+             "target": "girlfriend@socialestates.com",
+             "relation": "contact"
+             }
+  },
+ {"pk": "relation/contact/girlfriend@socialestates.com/otherboyfriend@socialestates.com",
+  "model": "common.Relation",
+  "fields": {"owner": "girlfriend@socialestates.com",
+             "target": "otherboyfriend@socialestates.com",
+             "relation": "contact"
+             }
+  },
+ {"pk": "relation/channeladmin/#support@socialestates.com/root@socialestates.com",
+  "model": "common.Relation",
+  "fields": {"owner": "#support@socialestates.com",
+             "target": "root@socialestates.com",
+             "relation": "channeladmin"
+             }
+  },
+ {"pk": "relation/channelmember/#support@socialestates.com/root@socialestates.com",
+  "model": "common.Relation",
+  "fields": {"owner": "#support@socialestates.com",
+             "target": "root@socialestates.com",
+             "relation": "channelmember"
+             }
+  },
+ {"pk": "relation/channeladmin/#popular@socialestates.com/popular@socialestates.com",
+  "model": "common.Relation",
+  "fields": {"owner": "#popular@socialestates.com",
+             "target": "popular@socialestates.com",
+             "relation": "channeladmin"
+             }
+  },
+ {"pk": "relation/channelmember/#popular@socialestates.com/popular@socialestates.com",
+  "model": "common.Relation",
+  "fields": {"owner": "#popular@socialestates.com",
+             "target": "popular@socialestates.com",
+             "relation": "channelmember"
+             }
+  },
+ {"pk": "relation/channelmember/#popular@socialestates.com/unpopular@socialestates.com",
+  "model": "common.Relation",
+  "fields": {"owner": "#popular@socialestates.com",
+             "target": "unpopular@socialestates.com",
+             "relation": "channelmember"
+             }
+  }
+]
+

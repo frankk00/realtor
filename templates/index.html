@@ -23,29 +23,6 @@
       google.load('maps', '2', {other_params: "sensor=false"});
       google.setOnLoadCallback(init);
     </script>
-    
-
-<!-- Load the Google Friend Connect javascript library. -->
-<script type="text/javascript">
-google.load('friendconnect', '0.8');
-</script>
-
-<!-- Initialize the Google Friend Connect OpenSocial API. -->
-<script type="text/javascript">
-google.friendconnect.container.setParentUrl('/' /* location of rpc_relay.html and canvas.html */);
-google.friendconnect.container.initOpenSocialApi({
-  site: '15281786276644124747',
-  onload: function(securityToken) { /* your callback, which is passed a security token */ }
-});
-</script>
-
-<script type="text/javascript">
-    function renderButton(){
-    	google.friendconnect.renderSignInButton({'id':'example2','style':'long'});
-    };
-  </script>
-    
-    
   </head>
   <body onunload="GUnload()">
     <div id="login-bar">
@@ -54,9 +31,9 @@ google.friendconnect.container.initOpenSocialApi({
         
         	<strong>
             {% if current_user %}
-            <a id="add-listing-toggle" href="#">Add Listings (FREE!)</a>
+            <a href="/ui/Listing/list/">Add Listings (FREE!)</a>
             {% else %}
-            <a href="{% login_url %}">Add Listings (FREE!)</a>
+            <a href="{% login_url %}">Add Listings (FREE! Click Here to Login!)</a>
             {% endif %}
             </strong>
             &nbsp;|&nbsp;
@@ -84,11 +61,10 @@ google.friendconnect.container.initOpenSocialApi({
             </p>
             </div>
             
-            <!-- 
               <div id="view-toggle">
 		        <a href="#">List view &raquo;</a>
 		      </div>
-		      -->
+
         
         <form action="" onsubmit="doGeocodeAndSearch(); return false;">
           <div id="search-container">
@@ -138,7 +114,7 @@ google.friendconnect.container.initOpenSocialApi({
         </div>
       
       <div id="footer">
-        <p align="center">Copyright &copy; 2010 SocialEstates.com (<a href="http://socialestates.com" target="_blank">socialestates.com</a>)</p>
+        <p align="center"><font size="2">Copyright &copy; 2010 <a href="http://socialestates.com" alt="SocialEstates.com" target="_blank">SocialEstates.com</a></font></p>
       </div>
     </div>
     
@@ -146,42 +122,25 @@ google.friendconnect.container.initOpenSocialApi({
 
     
     <script type="text/html" id="tpl_result_info_window">
+	<font size="2" color="000000">
+<style>
+background: #e1ffff; /* old browsers */
+background: -moz-linear-gradient(top, #e1ffff 0%, #e1ffff 7%, #e1ffff 12%, #fdffff 12%, #e6f8fd 30%, #c8eefb 54%, #bee4f8 75%, #b1d8f5 100%); /* firefox */
+
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#e1ffff), color-stop(7%,#e1ffff), color-stop(12%,#e1ffff), color-stop(12%,#fdffff), color-stop(30%,#e6f8fd), color-stop(54%,#c8eefb), color-stop(75%,#bee4f8), color-stop(100%,#b1d8f5)); /* webkit */
+
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e1ffff', endColorstr='#b1d8f5',GradientType=0 ); /* ie */	
+</style>
       <div class="result-info-window">
-        <h2><img src="<%= result.icon %>"/> <%= result.address %>
-      
-        <div class="details">
-          <% if (result.distance) { %>
-            <p class="distance"><%= formatDistance(result.distance) %></p>
-          <% } %>
-        
-          <ul>
-            <li>
-              <span class="label">Baths/Beds:</span>
-                <%= result.baths %> / <%= result.beds %>
-            </li>
-            <li>
-              <span class="label">Size:</span>
-                <%= result.baths %> / <%= result.size %>
-            </li>
-            <li>
-              <span class="label">Phone:</span>
-                <%= result.phone_number %>
-            </li>
-            <li>
-              <span class="label">Price:</span>
-                $<%= result.price %>
-            </li>
-            <li>
-              <span class="label">Type:</span>
-              <%= result.property_type %>
-            </li>
-          </ul></h2>
+        <img src="/static/images/mini.gif"/> <a href="/listing/<%= encodeURIComponent(result.address) %>"><%= result.address %></a><br> 
+		<%= result.beds %> Beds, <%= result.baths %> Baths<br>, $<%= result.price %>
         </div>
       </div>
+	</font>
     </script>
     
     <script type="text/html" id="tpl_result_list_item">
-        <h3><img src="<%= result.icon %>"/> <%= result.address %></h3>	
+        <h3><img src="<%= result.icon %>"/> <a href="/listing/<%= result.key %><%= result.address %></a></h3>	
 		<h3>Price: <%= result.price %></h3>
         <h3>Baths/Beds: <%= result.baths %> / <%= result.beds %></h3>
     </script>

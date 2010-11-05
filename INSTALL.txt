@@ -1,0 +1,74 @@
+Thanks for downloading django-batchimport.
+
+INSTALLATION:
+1. Ensure that you have Python 2.5+ installed. 
+See http://www.python.org for more information.
+
+2. Ensure that you have Django 1.0+ installed.
+See http://docs.djangoproject.com/en/dev/topics/install/ for more
+information.
+
+3. Install xlrd.
+See http://www.lexicon.net/sjmachin/xlrd.htm for more
+information.
+
+4. In the same folder where you found this file is a sample_project folder.
+Navigate to it.
+
+5. Run syncdb (adding admin user):
+   python manage.py syncdb
+
+6. Start your django app:
+    python manage.py runserver
+
+
+
+TESTING:
+1. Navigate to http://localhost:8000/batchimport/import_start/
+
+2. Pick School from the model drop-down. 
+
+3. Browse to the sample_data folder (in the same folder you found this 
+document). Select the sample_school_data.xls file. Click Submit.
+
+4. Leave the options alone for now. Select appropriate mappings from the
+spreadsheet drop downs for each of the model fields. You shouldn't have to 
+select anything for the school data. Click submit.
+
+5. Wait some time (longer on Windows machines for some reason).
+
+6. See the results of your batch import.
+
+7. Go back to http://localhost:8000/batchimport/import_start/
+
+8. Repeat steps 11-16 for Parents (sample_parents.xls) and 
+Students (sample_students.xls).
+
+9. Navigate to http://localhost:8000/batchimport/import_start/
+
+10. Pick Mapping: Student-Parent from the model drop-down. 
+
+11. Browse to the sample_data folder (in the same folder you found this 
+document). Select the sample_student_to_parent.xls file. Click Submit.
+
+12. Select the following options:
+Parent:
+-first_name: Pick ParentGivenName from the spreadsheet column dropdown.
+-last_name: Pick ParentSurname from the spreadsheet column dropdown.
+-email: Pick ParentEmailAddress from the spreadsheet column dropdown.
+Student:
+-first_name: Pick StudentGivenName from the spreadsheet column dropdown.
+-last_name: Pick StudentSurname from the spreadsheet column dropdown.
+-dob: Pick StudentBirthday from the spreadsheet column dropdown.
+
+13. Click submit.
+
+14. Wait some time (longer on Windows machines for some reason).
+
+15. See the results of your batch import.
+
+16. Go to http://localhost:8000/admin/ and log in.
+
+17. Check out the Schools, Parents, and Students you just imported.
+NOTE: The last names of the parents do NOT match the last names
+of the students (sorry. was too lazy).

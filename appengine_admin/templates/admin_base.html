@@ -1,0 +1,89 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title>Realtor.IO</title>
+    <link rel='stylesheet' id='font-face-css'  href='http://www.wpbundle.com/wp-content/themes/wpb/fonts/load.css?ver=3.0.1' type='text/css' media='all' /> 
+    <link type="text/css" rel="stylesheet" href="http://yui.yahooapis.com/2.7.0/build/reset/reset-min.css"/>
+    <link type="text/css" rel="stylesheet" href="/static/jqueryui-theme/jquery-ui-1.7.2.custom.css"/>
+    <link type="text/css" rel="stylesheet" href="/static/css/app.css"/>
+	<script type="text/javascript" charset="utf-8"
+	        src="http://yui.yahooapis.com/3.2.0/build/yui/yui-min.js">
+	</script>
+	<script type="text/javascript" src="/static/js/jquery.jqtransformplugin.js"></script>
+	<script type="text/javascript" src="/static/js/jqtransform.js"></script>
+    <script type="text/javascript" src="/static/js/jquery.min.js"></script>
+    <script type="text/javascript" src="/static/js/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="http://www.google.com/jsapi?key={% jsapi_key %}"></script>
+    <script type="text/javascript" src="/static/lib/jquery.scrollTo-1.4.2-min.js"></script>
+    <script type="text/javascript" src="/static/lib/microtemplate.js"></script>
+    <script type="text/javascript" src="/static/js/front.js"></script>
+    <link href='http://fonts.googleapis.com/css?family=Lobster&subset=latin' rel='stylesheet' type='text/css'> 
+	<link href='http://fonts.googleapis.com/css?family=Droid+Sans:regular,bold' rel='stylesheet' type='text/css'> 
+	<script language="JavaScript" src="http://j.maxmind.com/app/geoip.js"></script>
+    <script type="text/javascript">
+      google.load('maps', '2', {other_params: "sensor=false"});
+      google.setOnLoadCallback(init);
+    </script>
+	<style type="text/css" media="screen">
+	    @import url( /appengine_admin_media/style.css );
+	</style>
+	<script type="text/javascript" src="/appengine_admin_media/js/core.js">
+	</script>
+	<script type="text/javascript" src="/appengine_admin_media/js/calendar.js">
+	</script>
+	<script type="text/javascript" src="/appengine_admin_media/js/DateTimeShortcuts.js">
+	</script>
+  </head>
+  <body onunload="GUnload()">
+    <div id="login-bar">
+      	<a href="/">Home</a>
+        &nbsp;|&nbsp;
+        
+        	<strong>
+            {% if current_user %}
+            <a href="/ui/">Add Listings (FREE!)</a>
+            {% else %}
+            <a href="{% login_url %}">Add Listings (FREE!)</a>
+            {% endif %}
+            </strong>
+            &nbsp;|&nbsp;
+            
+        	<strong>
+            <a target="_portfolio" href="/p">Create Portfolios (WOW!)</a>
+            </strong>
+            &nbsp;|&nbsp;
+        
+	      {% if current_user %}      
+	        {{ current_user.email }}
+	        &nbsp;|&nbsp;
+	        <a href="{% logout_url %}">Logout</a>
+	      {% else %}
+	        <a href="{% login_url %}">Login</a>
+	      {% endif %}
+    </div>
+    
+        {% if not errorpage %}
+        <div id="sidebar">
+
+            <p><a href="{{ urlPrefix }}/">Admin Home</a> - Select Module:
+                {% for modelName in models %}
+                <a href="{{ urlPrefix }}/{{ modelName }}/list/">{{ modelName }}</a></li>
+                {% endfor %}
+            </p>
+
+        </div>
+        {% endif %}
+        
+        <br></br>
+
+        <div id="container" style="width: 100%; padding: 50">
+            {% block content %}{% endblock %}
+        </div>
+      
+      <div id="footer">
+        <p align="center">Copyright &copy; 2010 SocialEstates.com (<a href="http://socialestates.com" target="_blank">socialestates.com</a>)</p>
+      </div>
+    </div>
+  </body>
+</html>

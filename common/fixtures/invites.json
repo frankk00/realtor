@@ -1,0 +1,17 @@
+[{"pk": "invite/ACTORINVITE",
+  "model": "common.invite",
+  "fields": {"code": "ACTORINVITE",
+             "email": "demo@socialestates.com",
+             "from_actor": "popular@socialestates.com",
+             "for_actor": "popular@socialestates.com"
+             }
+  },
+ {"pk": "invite/CHANNELINVITE",
+  "model": "common.invite",
+  "fields": {"code": "CHANNELINVITE",
+             "email": "demo2@socialestates.com",
+             "from_actor": "popular@socialestates.com",
+             "for_actor": "#popular@socialestates.com"
+             }
+  }
+]

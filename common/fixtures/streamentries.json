@@ -1,0 +1,174 @@
+[{"pk": "stream/popular@socialestates.com/presence/12345",
+  "model": "common.streamentry",
+  "fields": {"extra": {"title": "test entry 1",
+                       "comment_count": 2
+                       },
+             "uuid": "12345",
+             "stream": "stream/popular@socialestates.com/presence",
+             "created_at": "2008-02-15 01:02:03",
+             "owner": "popular@socialestates.com",
+             "actor": "popular@socialestates.com"
+             }
+  },
+ {"pk": "stream/popular@socialestates.com/presence/12346",
+  "model": "common.streamentry",
+  "fields": {"extra": {"title": "test entry 2",
+                       "icon": "web-balloons"},
+             "uuid": "12346",
+             "stream": "stream/popular@socialestates.com/presence",
+             "created_at": "2008-02-15 01:02:04",
+             "owner": "popular@socialestates.com",
+             "actor": "popular@socialestates.com"
+             }
+  },
+ {"pk": "stream/popular@socialestates.com/presence/12347",
+  "model": "common.streamentry",
+  "fields": {"extra": {"title": "test entry 3"},
+             "uuid": "12347",
+             "stream": "stream/popular@socialestates.com/presence",
+             "created_at": "2008-02-15 01:02:05",
+             "owner": "popular@socialestates.com",
+             "actor": "popular@socialestates.com"
+             }
+  },
+ {"pk": "stream/popular@socialestates.com/presence/12348",
+  "model": "common.streamentry",
+  "fields": {"extra": {"title": "deleted test entry"},
+             "uuid": "12347",
+             "stream": "stream/popular@socialestates.com/presence",
+             "created_at": "2008-02-15 01:02:05",
+             "deleted_at": "2008-02-15 01:02:06",
+             "owner": "popular@socialestates.com",
+             "actor": "popular@socialestates.com"
+             }
+  },
+ {"pk": "stream/deleted@socialestates.com/presence/10347",
+  "model": "common.streamentry",
+  "fields": {"extra": {"title": "test entry by deleted user"},
+             "uuid": "10347",
+             "stream": "stream/deleted@socialestates.com/presence",
+             "created_at": "2008-02-15 01:09:05",
+             "owner": "deleted@socialestates.com",
+             "actor": "deleted@socialestates.com"
+             }
+  },
+ {"pk": "stream/#popular@socialestates.com/presence/13345",
+  "model": "common.streamentry",
+  "fields": {"extra": {"title": "test channel entry 1"},
+             "uuid": "13345",
+             "stream": "stream/#popular@socialestates.com/presence",
+             "created_at": "2008-02-15 01:03:05",
+             "owner": "#popular@socialestates.com",
+             "actor": "popular@socialestates.com"
+             }
+  },
+ {"pk": "stream/popular@socialestates.com/comments/12348",
+  "model": "common.streamentry",
+  "fields": {"extra": {"content": "test entry comment 1",
+                       "entry_stream": "stream/popular@socialestates.com/presence",
+                       "entry_stream_type": "presence",
+                       "entry_title": "test entry 1",
+                       "entry_uuid": "12345",
+                       "entry_actor": "popular@socialestates.com"
+                       },
+             "uuid": "12348",
+             "entry": "stream/popular@socialestates.com/presence/12345",
+             "stream": "stream/popular@socialestates.com/comments",
+             "created_at": "2008-02-15 01:02:08",
+             "owner": "popular@socialestates.com",
+             "actor": "popular@socialestates.com"
+             }
+  },
+ {"pk": "stream/unpopular@socialestates.com/comments/14341",
+  "model": "common.streamentry",
+  "fields": {"extra": {"content": "test entry comment 2",
+                       "entry_stream": "stream/popular@socialestates.com/presence",
+                       "entry_stream_type": "presence",
+                       "entry_title": "test entry 1",
+                       "entry_uuid": "12345",
+                       "entry_actor": "popular@socialestates.com"
+                       },
+             "uuid": "14341",
+             "entry": "stream/popular@socialestates.com/presence/12345",
+             "stream": "stream/unpopular@socialestates.com/comments",
+             "created_at": "2008-02-15 01:01:01",
+             "owner": "popular@socialestates.com",
+             "actor": "unpopular@socialestates.com"
+             }
+  },
+ {"pk": "stream/unpopular@socialestates.com/comments/114341",
+  "model": "common.streamentry",
+  "fields": {"extra": {"content": "test deleted comment",
+                       "entry_stream": "stream/popular@socialestates.com/presence",
+                       "entry_stream_type": "presence",
+                       "entry_title": "test entry 1",
+                       "entry_uuid": "12345",
+                       "entry_actor": "popular@socialestates.com"
+                       },
+             "uuid": "114341",
+             "entry": "stream/popular@socialestates.com/presence/12345",
+             "stream": "stream/unpopular@socialestates.com/comments",
+             "created_at": "2008-02-15 01:01:01",
+             "deleted_at": "2008-02-15 01:01:02",
+             "owner": "popular@socialestates.com",
+             "actor": "unpopular@socialestates.com"
+             }
+  },
+ {"pk": "stream/girlfriend@socialestates.com/presence/16961",
+  "model": "common.streamentry",
+  "fields": {"extra": {"title": "private test entry 1",
+                       "comment_count": 2
+                       },
+             "uuid": "16961",
+             "stream": "stream/girlfriend@socialestates.com/presence",
+             "created_at": "2008-02-15 01:02:03",
+             "owner": "girlfriend@socialestates.com",
+             "actor": "girlfriend@socialestates.com"
+             }
+  },
+ {"pk": "stream/girlfriend@socialestates.com/comments/16962",
+  "model": "common.streamentry",
+  "fields": {"extra": {"content": "private test entry comment 1",
+                       "entry_stream": "stream/girlfriend@socialestates.com/presence",
+                       "entry_stream_type": "presence",
+                       "entry_title": "private test entry 1",
+                       "entry_uuid": "16961",
+                       "entry_actor": "girlfriend@socialestates.com"
+                       },
+             "uuid": "16962",
+             "entry": "stream/girlfriend@socialestates.com/presence/16961",
+             "stream": "stream/girlfriend@socialestates.com/comments",
+             "created_at": "2008-02-15 01:02:08",
+             "owner": "girlfriend@socialestates.com",
+             "actor": "girlfriend@socialestates.com"
+             }
+  },
+ {"pk": "stream/boyfriend@socialestates.com/comments/16963",
+  "model": "common.streamentry",
+  "fields": {"extra": {"content": "private test entry comment 2",
+                       "entry_stream": "stream/girlfriend@socialestates.com/presence",
+                       "entry_stream_type": "presence",
+                       "entry_title": "private test entry 1",
+                       "entry_uuid": "16961",
+                       "entry_actor": "girlfriend@socialestates.com"
+                       },
+             "uuid": "16963",
+             "entry": "stream/girlfriend@socialestates.com/presence/16961",
+             "stream": "stream/boyfriend@socialestates.com/comments",
+             "created_at": "2008-02-15 01:01:01",
+             "owner": "girlfriend@socialestates.com",
+             "actor": "boyfriend@socialestates.com"
+             }
+  },
+ {"pk": "stream/popular@socialestates.com/presence-deleted/17346",
+  "model": "common.streamentry",
+  "fields": {"extra": {"title": "entry on deleted stream",
+                       "icon": "web-balloons"},
+             "uuid": "17346",
+             "stream": "stream/popular@socialestates.com/presence-deleted",
+             "created_at": "2008-02-15 01:02:07",
+             "owner": "popular@socialestates.com",
+             "actor": "popular@socialestates.com"
+             }
+  }
+]

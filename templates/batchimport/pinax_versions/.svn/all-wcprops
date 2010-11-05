@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/!svn/ver/8/trunk/templates/batchimport/pinax_versions
+END
+processing.html
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/!svn/ver/2/trunk/templates/batchimport/pinax_versions/processing.html
+END
+start.html
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/!svn/ver/2/trunk/templates/batchimport/pinax_versions/start.html
+END
+results.html
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/!svn/ver/2/trunk/templates/batchimport/pinax_versions/results.html
+END
+options.html
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/!svn/ver/8/trunk/templates/batchimport/pinax_versions/options.html
+END

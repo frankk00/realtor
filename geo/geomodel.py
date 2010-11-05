@@ -34,6 +34,10 @@ import geomath
 import geotypes
 import util
 
+import geocoder
+
+import logging
+
 DEBUG = False
 
 
@@ -59,11 +63,13 @@ class GeoModel(db.Model):
     entity's location property. A put() must occur after this call to save
     the changes to App Engine."""
     if self.location:
+      logging.info("Updating Location: %s" % self.location)
       max_res_geocell = geocell.compute(self.location)
       self.location_geocells = [max_res_geocell[:res]
                                 for res in
                                 range(1, geocell.MAX_GEOCELL_RESOLUTION + 1)]
     else:
+      logging.warn("Not updating location, not enough data!")
       self.location_geocells = []
 
   @staticmethod
@@ -95,6 +101,8 @@ class GeoModel(db.Model):
     """
     # TODO(romannurik): Check for GqlQuery.
     results = []
+    
+    logging.info("Query: %s - %s, BBox: %s, Max Results: %s, Cost Function: %s" % (query, vars(query), bbox, max_results, cost_function))
 
     if cost_function is None:
       cost_function = default_cost_function
@@ -185,6 +193,8 @@ class GeoModel(db.Model):
       cur_resolution = len(cur_geocells[0])
       temp_query = copy.deepcopy(query)  # TODO(romannurik): is this safe?
       temp_query.filter('location_geocells IN', cur_geocells_unique)
+      
+      logging.info("Temp Query: %s" % temp_query)
 
       # Update results and sort.
       new_results = temp_query.fetch(1000)

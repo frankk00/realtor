@@ -1,0 +1,241 @@
+[{"pk": "stream/popular@socialestates.com/presence",
+  "model": "common.stream",
+  "fields": {"title": "popular's presence",
+             "owner": "popular@socialestates.com",
+             "type": "presence",
+             "slug": "presence",
+             "read": 3,
+             "write": 1
+             }
+  },
+ {"pk": "stream/popular@socialestates.com/comments",
+  "model": "common.stream",
+  "fields": {"title": "popular's comments",
+             "owner": "popular@socialestates.com",
+             "type": "comment",
+             "slug": "comments",
+             "read": 1,
+             "write": 1
+             }
+  },
+ {"pk": "stream/unpopular@socialestates.com/presence",
+  "model": "common.stream",
+  "fields": {"title": "unpopular's presence",
+             "owner": "unpopular@socialestates.com",
+             "type": "presence",
+             "slug": "presence",
+             "read": 3,
+             "write": 1
+             }
+  },
+ {"pk": "stream/unpopular@socialestates.com/comments",
+  "model": "common.stream",
+  "fields": {"title": "unpopular's comments",
+             "owner": "unpopular@socialestates.com",
+             "type": "comment",
+             "slug": "comments",
+             "read": 1,
+             "write": 1
+             }
+  },
+ {"pk": "stream/obligated@socialestates.com/presence",
+  "model": "common.stream",
+  "fields": {"title": "obligated's presence",
+             "owner": "obligated@socialestates.com",
+             "type": "presence",
+             "slug": "presence",
+             "read": 3,
+             "write": 1
+             }
+  },
+ {"pk": "stream/obligated@socialestates.com/comments",
+  "model": "common.stream",
+  "fields": {"title": "obligated's comments",
+             "owner": "obligated@socialestates.com",
+             "type": "comment",
+             "slug": "comments",
+             "read": 1,
+             "write": 1
+             }
+  },
+ {"pk": "stream/boyfriend@socialestates.com/presence",
+  "model": "common.stream",
+  "fields": {"title": "boyfriend's presence",
+             "owner": "boyfriend@socialestates.com",
+             "type": "presence",
+             "slug": "presence",
+             "read": 3,
+             "write": 1
+             }
+  },
+ {"pk": "stream/boyfriend@socialestates.com/comments",
+  "model": "common.stream",
+  "fields": {"title": "boyfriend's comments",
+             "owner": "boyfriend@socialestates.com",
+             "type": "comment",
+             "slug": "comments",
+             "read": 1,
+             "write": 1
+             }
+  },
+ {"pk": "stream/celebrity@socialestates.com/presence",
+  "model": "common.stream",
+  "fields": {"title": "celebrity's presence",
+             "owner": "celebrity@socialestates.com",
+             "type": "presence",
+             "slug": "presence",
+             "read": 2,
+             "write": 1
+             }
+  },
+ {"pk": "stream/celebrity@socialestates.com/comments",
+  "model": "common.stream",
+  "fields": {"title": "celebrity's comments",
+             "owner": "celebrity@socialestates.com",
+             "type": "comment",
+             "slug": "comments",
+             "read": 1,
+             "write": 1
+             }
+  },
+ {"pk": "stream/annoying@socialestates.com/presence",
+  "model": "common.stream",
+  "fields": {"title": "annoying's presence",
+             "owner": "annoying@socialestates.com",
+             "type": "presence",
+             "slug": "presence",
+             "read": 2,
+             "write": 1
+             }
+  },
+ {"pk": "stream/annoying@socialestates.com/comments",
+  "model": "common.stream",
+  "fields": {"title": "annoying's comments",
+             "owner": "annoying@socialestates.com",
+             "type": "comment",
+             "slug": "comments",
+             "read": 1,
+             "write": 1
+             }
+  },
+ {"pk": "stream/girlfriend@socialestates.com/presence",
+  "model": "common.stream",
+  "fields": {"title": "girlfriend's presence",
+             "owner": "girlfriend@socialestates.com",
+             "type": "presence",
+             "slug": "presence",
+             "read": 2,
+             "write": 1
+             }
+  },
+ {"pk": "stream/girlfriend@socialestates.com/comments",
+  "model": "common.stream",
+  "fields": {"title": "girlfriend's comments",
+             "owner": "girlfriend@socialestates.com",
+             "type": "comment",
+             "slug": "comments",
+             "read": 1,
+             "write": 1
+             }
+  },
+ {"pk": "stream/otherboyfriend@socialestates.com/presence",
+  "model": "common.stream",
+  "fields": {"title": "otherboyfriend's presence",
+             "owner": "otherboyfriend@socialestates.com",
+             "type": "presence",
+             "slug": "presence",
+             "read": 2,
+             "write": 1
+             }
+  },
+ {"pk": "stream/otherboyfriend@socialestates.com/comments",
+  "model": "common.stream",
+  "fields": {"title": "otherboyfriend's comments",
+             "owner": "otherboyfriend@socialestates.com",
+             "type": "comment",
+             "slug": "comments",
+             "read": 1,
+             "write": 1
+             }
+  },
+ {"pk": "stream/hermit@socialestates.com/presence",
+  "model": "common.stream",
+  "fields": {"title": "hermit's presence",
+             "owner": "hermit@socialestates.com",
+             "type": "presence",
+             "slug": "presence",
+             "read": 2,
+             "write": 1
+             }
+  },
+ {"pk": "stream/hermit@socialestates.com/comments",
+  "model": "common.stream",
+  "fields": {"title": "hermit's comments",
+             "owner": "hermit@socialestates.com",
+             "type": "comments",
+             "slug": "comments",
+             "read": 2,
+             "write": 1
+             }
+  },
+ {"pk": "stream/deleted@socialestates.com/presence",
+  "model": "common.stream",
+  "fields": {"title": "deleted's presence",
+             "owner": "deleted@socialestates.com",
+             "type": "presence",
+             "slug": "presence",
+             "read": 3,
+             "write": 1
+             }
+  },
+ {"pk": "stream/deleted@socialestates.com/comments",
+  "model": "common.stream",
+  "fields": {"title": "deleted's comments",
+             "owner": "deleted@socialestates.com",
+             "type": "comment",
+             "slug": "comments",
+             "read": 1,
+             "write": 1
+             }
+  },
+ {"pk": "stream/root@socialestates.com/presence",
+  "model": "common.stream",
+  "fields": {"title": "root's presence",
+             "owner": "root@socialestates.com",
+             "type": "presence",
+             "slug": "presence",
+             "read": 3,
+             "write": 1
+             }
+  },
+ {"pk": "stream/root@socialestates.com/comments",
+  "model": "common.stream",
+  "fields": {"title": "root's comments",
+             "owner": "root@socialestates.com",
+             "type": "comment",
+             "slug": "comments",
+             "read": 1,
+             "write": 1
+             }
+  },
+ {"pk": "stream/#popular@socialestates.com/presence",
+  "model": "common.stream",
+  "fields": {"title": "#popular channel",
+             "owner": "#popular@socialestates.com",
+             "type": "presence",
+             "slug": "presence",
+             "read": 3,
+             "write": 2
+             }
+  },
+ {"pk": "stream/#support@socialestates.com/presence",
+  "model": "common.stream",
+  "fields": {"title": "#support channel",
+             "owner": "#support@socialestates.com",
+             "type": "presence",
+             "slug": "presence",
+             "read": 2,
+             "write": 2
+             }
+  }
+]
